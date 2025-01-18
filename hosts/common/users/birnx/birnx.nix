@@ -19,7 +19,7 @@ inputs,
     shell = pkgs.fish;
   };
     home-manager.users.birnx =
-      import birnx/${config.networking.hostname}.nix;
+      import birnx/${config.networking.hostName}.nix;
 }
 
 
