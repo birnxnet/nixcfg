@@ -86,13 +86,6 @@ pkgs,
    };
   };
 
-  users.users.birnx = {
-    isNormalUser = true;
-    description = "birnx";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [ ];
-    shell = pkgs.fish;
-  };
 
   security.sudo.wheelNeedsPassword = false;
 
@@ -122,7 +115,6 @@ pkgs,
     enable = true;
     xwayland.enable = true;
     portalPackage = pkgs.xdg-desktop-portal-hyprland;
-    };
   };
 
   services.openssh.enable = true;
