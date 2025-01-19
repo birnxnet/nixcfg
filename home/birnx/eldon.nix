@@ -1,1 +1,22 @@
-{ config, ... }: { imports = [ ./home.nix ../common ]; }
+{
+  imports = [
+    ./home.nix
+    ../common
+    ../features/cli
+    ../features/desktop
+  ];
+
+  features = {
+    cli = {
+      # nvim.enable = true;
+      ghostty.enable = true;
+      fish.enable = true;
+      fzf.enable = true;
+    };
+    desktop = {
+      hyprland.enable = true;
+      wayland.enable = true;
+      fonts.enable = true;
+    };
+  };
+}

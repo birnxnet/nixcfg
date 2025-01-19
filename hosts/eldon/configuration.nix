@@ -1,26 +1,21 @@
-{
-inputs,
-config,
-pkgs,
-... 
-}:
+{pkgs, ...}: {
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
-{
-  imports = [ ./hardware-configuration.nix ];
+  boot = {
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+    kernelPackages = pkgs.linuxPackages_xanmod_latest;
+  };
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  
-  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
-
-  networking.hostName = "eldon";  
+  networking.hostName = "eldon";
   networking.networkmanager.enable = true;
-  
+
   hardware = {
     bluetooth = {
       enable = true;
       powerOnBoot = true;
-      # package = pkgs.bluez-experimental;
     };
   };
 
@@ -39,43 +34,28 @@ pkgs,
   };
 
   programs = {
-   _1password-gui = {
+    _1password-gui = {
       enable = true;
-      polkitPolicyOwners = [ "birnx" ];
+      polkitPolicyOwners = ["birnx"];
     };
     _1password = {
       enable = true;
     };
 
-  foot.enable = true;
-  fish = {
+    foot.enable = true;
+    fish = {
       enable = true;
-      vendor = {
-        functions.enable = true;
-        config.enable = true;
-        completions.enable = true;
-      };
-      shellInit = ''
-        set -U fish_greeting ""
-        export PATH="$HOME/.local/bin:$PATH"
-      '';
-      shellAliases = {
-        ll = "eza --icons --group-directories-first";
-        lg = "lazygit";
-      };
-      shellAbbrs = {
-        fr = "nh os boot --hostname eldon ~/nixcfg";
-        fu = "nh os boot --hostname eldon --update ~/nixcfg";
-      };
     };
-    };
+  };
 
   services = {
     xserver.xkb = {
       layout = "us";
       variant = "";
     };
+
     blueman.enable = true;
+
     pipewire = {
       enable = true;
       pulse.enable = true;
@@ -83,9 +63,8 @@ pkgs,
         enable = true;
         support32Bit = true;
       };
-   };
+    };
   };
-
 
   security.sudo.wheelNeedsPassword = false;
 
@@ -100,61 +79,47 @@ pkgs,
     bluez-experimental
     bluez-tools
     brave
-    inputs.nv.packages.${pkgs.system}.default
- ];
-
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent e {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+    # inputs.nv.packages.${pkgs.system}.default
+  ];
 
   programs = {
-    waybar.enable = true;
-  hyprland = {
-    enable = true;
-    xwayland.enable = true;
-    portalPackage = pkgs.xdg-desktop-portal-hyprland;
+    hyprland = {
+      enable = true;
+      xwayland.enable = true;
+      portalPackage = pkgs.xdg-desktop-portal-hyprland;
+    };
   };
 
   services.openssh.enable = true;
-  
+
   nix = {
     settings = {
       auto-optimise-store = true;
       builders-use-substitutes = true;
-      substituters = [ "https://hyprland.cachix.org" ];
-      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
-      experimental-features = [ "nix-command" "flakes" ];
-      trusted-users = [ "root" "birnx" ];
-      # gc = {
-      #   automatic = true;
-      #   dates = "weekly";
-      #   options = "--delete-older-than 30d";
-    # };
+      substituters = [
+        "https://hyprland.cachix.org"
+        "https://nvf.cachix.org"
+      ];
+      trusted-public-keys = [
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+        "nvf.cachix.org-1:GMQWiUhZ6ux9D5CvFFMwnc2nFrUHTeGaXRlVBXo+naI="
+      ];
+      experimental-features = ["nix-command" "flakes"];
+      trusted-users = ["root" "birnx"];
     };
   };
 
-  hardware.graphics = {
-    enable = true;
-    extraPackages = with pkgs; [
-      amdvlk
-      mesa
-      vulkan-tools
-      vulkan-loader
-      vulkan-validation-layers
-      vulkan-extension-layer
-    ];
-    enable32Bit = true;
-    extraPackages32 = with pkgs.pkgsi686Linux; [
-      amdvlk
-      vaapiVdpau
-      libvdpau-va-gl
-    ];
+  hardware = {
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
+    amdgpu = {
+      initrd.enable = true;
+      opencl.enable = true;
+      amdvlk.enable = true;
+    };
   };
 
-
-
   system.stateVersion = "24.11";
-};
 }

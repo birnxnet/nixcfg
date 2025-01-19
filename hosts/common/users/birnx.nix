@@ -15,11 +15,11 @@ inputs,
       "plugdev"
       "input"
     ];
-    packages = with pkgs; [ inputs.home-manager.packages.${pkgs.system}.default ];
+    packages = [ inputs.home-manager.packages.${pkgs.system}.default ];
     shell = pkgs.fish;
   };
     home-manager.users.birnx =
-      import birnx/${config.networking.hostname}.nix;
+      import ../../../home/birnx/${config.networking.hostName}.nix;
 }
 
 
