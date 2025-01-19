@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   imports = [
-    ./hyprland
+    ./hyprland.nix
     ./fonts.nix
     ./wayland.nix
   ];

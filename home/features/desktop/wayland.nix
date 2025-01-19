@@ -12,16 +12,15 @@ in {
   config = mkIf cfg.enable {
     programs.waybar = {
       enable = true;
-      settings = {
-        modules-center = [ "hyprland/workspaces" ];
-      "hyprland/workspaces" = {
-          format = "{name}";
-          format-icons = {
-            default = " ";
-            active = " ";
-            urgent = " ";
-          };
-       };
+        # modules-center = [ "hyprland/workspaces" ];
+      # "hyprland/workspaces" = {
+      #     format = "{name}";
+      #     format-icons = {
+      #       default = " ";
+      #       active = " ";
+      #       urgent = " ";
+      #     };
+       # };
       style = ''
         @define-color background-darker rgba(30, 31, 41, 230);
         @define-color background #282a36;
@@ -256,5 +255,4 @@ in {
       television
     ];
   };
- };
 }
