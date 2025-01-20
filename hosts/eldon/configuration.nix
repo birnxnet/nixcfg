@@ -1,11 +1,9 @@
-
-{ pkgs, ... } : 
-
-let
-  berkeley-mono-typeface = pkgs.callPackage ../../pkgs/berkeley-mono 
-        { inherit pkgs; };
+{pkgs, ...}: let
+  berkeley-mono-typeface =
+    pkgs.callPackage ../../pkgs/berkeley-mono
+    {inherit pkgs;};
 in {
-  imports = [./hardware-configuration.nix ];
+  imports = [./hardware-configuration.nix];
 
   boot = {
     loader.timeout = 1;
@@ -80,8 +78,7 @@ in {
     };
   };
 
-
-    fonts.packages = with pkgs; = [ berkeley-mono-typeface ];
+  # fonts.packages with pkgs  berkeley-mono-typeface;
   fonts = {
     fontDir.enable = true;
     enableGhostscriptFonts = true;
@@ -134,6 +131,7 @@ in {
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    berkeley-mono-typeface
     fishPlugins.hydro
     fishPlugins.transient-fish
     git

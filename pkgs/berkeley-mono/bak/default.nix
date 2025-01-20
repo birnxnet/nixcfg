@@ -9,7 +9,12 @@ stdenvNoCC.mkDerivation {
 
   installPhase = ''
     mkdir -p $out/share/fonts/truetype/
-    cp -r $src/*.{ttf,otf} $out/share/fonts/truetype/
+    if [ -d "$src/fonts" ]; then
+      cp -r $src/fonts/*.ttf $out/share/fonts/truetype/
+    else
+      echo "No fonts found in $src/fonts"
+      exit 0
+    fi
   '';
 
   meta = with lib; {
