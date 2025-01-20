@@ -1,4 +1,6 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  berkeley-mono-typeface = pkgs.callPackage ../../pkgs/berkeley-mono {inherit pkgs;};
+in {
   imports = [
     ./hardware-configuration.nix
   ];
@@ -79,6 +81,7 @@
   fonts = {
     fontDir.enable = true;
     enableGhostscriptFonts = true;
+    packages = with pkgs; [berkeley-mono-typeface];
   };
 
   services = {
@@ -132,11 +135,7 @@
     fishPlugins.transient-fish
     git
     nh
-    bluez
-    bluez-experimental
-    bluez-tools
     brave
-    # inputs.nv.packages.${pkgs.system}.default
   ];
 
   environment.variables = {
