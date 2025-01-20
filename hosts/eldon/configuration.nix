@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  inputs,
+  pkgs,
+  ...
+}: let
   berkeley-mono-typeface =
     pkgs.callPackage ../../pkgs/berkeley-mono/default.nix
     {inherit pkgs;};
@@ -130,14 +134,19 @@ in {
 
   nixpkgs.config.allowUnfree = true;
 
+  programs.neovim = {
+    enable = true;
+    package = pkgs.neovim-unwrapped;
+  };
+
   environment.systemPackages = with pkgs; [
-    # berkeley-mono-typeface
+    berkeley-mono-typeface
     fishPlugins.hydro
     fishPlugins.transient-fish
     git
     nh
     brave
-    inputs.nvix.packages.${system}.default
+    inputs.nvix.packages.${system}.base.extend
   ];
 
   environment.variables = {

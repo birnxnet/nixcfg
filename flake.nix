@@ -26,50 +26,50 @@
       url = "github:Duckonaut/split-monitor-workspaces";
       inputs.hyprland.follows = "hyprland";
     };
-    inputs.nvix = {
-      url = "github:niksingh710/nvix";
+    nvix = {
+      url = "github:birnx/nvix";
       inputs.nixpkgs.follows = "nixpkgs";
-      nvf.url = "github:notashelf/nvf";
-      # nv.url = "github:birnx/nv";
     };
+    nvf.url = "github:notashelf/nvf";
+    # nv.url = "github:birnx/nv";
+  };
 
-    outputs = {
-      self,
-      home-manager,
-      nixpkgs,
-      ...
-    } @ inputs: let
-      inherit (self) outputs;
-      systems = [
-        "aarch64-linux"
-        "i686-linux"
-        "x86_64-linux"
-        "aarch64-darwin"
-        "x86_64-darwin"
-      ];
-      forAllSystems = nixpkgs.lib.genAttrs systems;
-    in {
-      packages =
-        forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
-      overlays = import ./overlays {inherit inputs;};
-      nixosConfigurations = {
-        eldon = nixpkgs.lib.nixosSystem {
-          specialArgs = {inherit inputs outputs;};
-          modules = [
-            # nvf.nixosModules.default
-            ./hosts/eldon
-          ];
-        };
+  outputs = {
+    self,
+    home-manager,
+    nixpkgs,
+    ...
+  } @ inputs: let
+    inherit (self) outputs;
+    systems = [
+      "aarch64-linux"
+      "i686-linux"
+      "x86_64-linux"
+      "aarch64-darwin"
+      "x86_64-darwin"
+    ];
+    forAllSystems = nixpkgs.lib.genAttrs systems;
+  in {
+    packages =
+      forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+    overlays = import ./overlays {inherit inputs;};
+    nixosConfigurations = {
+      eldon = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          # nvf.nixosModules.default
+          ./hosts/eldon
+        ];
       };
-      homeConfigurations = {
-        "birnx@eldon" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages."x86_64-linux";
-          extraSpecialArgs = {inherit inputs outputs;};
-          modules = [
-            # nvf.homeManagerModules.default
-            ./home/birnx/eldon.nix
-          ];
-        };
+    };
+    homeConfigurations = {
+      "birnx@eldon" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages."x86_64-linux";
+        extraSpecialArgs = {inherit inputs outputs;};
+        modules = [
+          # nvf.homeManagerModules.default
+          ./home/birnx/eldon.nix
+        ];
       };
     };
   };
