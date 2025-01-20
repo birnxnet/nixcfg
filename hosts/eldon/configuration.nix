@@ -3,15 +3,14 @@
   ...
 }:
 
-let
-  callPackage = pkg: pkgs.callPackage pkg;
-in
-{
-berkeley-mono-typeface = callPackage ../../pkgs { };
-}
+# let
+#   berkeley-mono-typeface = pkgs.callPackage ../../../pkgs/berkeley-mono/berkeley.nix {
+#     inherit pkgs;
+#   };
+# in
 
-  {
-  imports = [./hardware-configuration.nix];
+{
+  imports = [ ./hardware-configuration.nix ];
 
   boot = {
     loader.timeout = 1;
@@ -59,7 +58,7 @@ berkeley-mono-typeface = callPackage ../../pkgs { };
   programs = {
     _1password-gui = {
       enable = true;
-      polkitPolicyOwners = ["birnx"];
+      polkitPolicyOwners = [ "birnx" ];
     };
     _1password = {
       enable = true;
@@ -90,7 +89,7 @@ berkeley-mono-typeface = callPackage ../../pkgs { };
     fontDir.enable = true;
     enableGhostscriptFonts = true;
     packages = with pkgs; [
-      berkeley-mono-typeface
+      # berkeley-mono-typeface
       cantarell-fonts
       hack-font
       inter
@@ -153,11 +152,6 @@ berkeley-mono-typeface = callPackage ../../pkgs { };
 
   nixpkgs.config.allowUnfree = true;
 
-  programs.neovim = {
-    enable = true;
-    package = pkgs.neovim-unwrapped;
-  };
-
   environment.systemPackages = with pkgs; [
     fishPlugins.hydro
     fishPlugins.transient-fish
@@ -192,8 +186,14 @@ berkeley-mono-typeface = callPackage ../../pkgs { };
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "nvf.cachix.org-1:GMQWiUhZ6ux9D5CvFFMwnc2nFrUHTeGaXRlVBXo+naI="
       ];
-      experimental-features = ["nix-command" "flakes"];
-      trusted-users = ["root" "birnx"];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      trusted-users = [
+        "root"
+        "birnx"
+      ];
     };
   };
 

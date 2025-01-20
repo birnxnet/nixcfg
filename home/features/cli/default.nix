@@ -2,9 +2,9 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   imports = [
-    # ./nvf.nix
     ./fish.nix
     ./ghostty.nix
     ./fzf.nix
@@ -20,7 +20,12 @@
       enable = true;
       enableFishIntegration = true;
       enableBashIntegration = true;
-      extraOptions = ["-l" "--icons" "--git" "-a"];
+      extraOptions = [
+        "-l"
+        "--icons"
+        "--git"
+        "-a"
+      ];
     };
 
     bat = {
@@ -38,7 +43,7 @@
 
   home.packages = with pkgs; [
     coreutils
-    inputs.nvix.packages.${pkgs.system}.default
+    inputs.khanelivim.packages.${pkgs.system}.default
     zellij
     fd
     btop

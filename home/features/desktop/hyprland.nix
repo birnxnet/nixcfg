@@ -5,20 +5,21 @@
   lib,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.features.desktop.hyprland;
-  inherit
-    (inputs.split-monitor-workspaces.packages.${pkgs.system})
+  inherit (inputs.split-monitor-workspaces.packages.${pkgs.system})
     split-monitor-workspaces
     ;
-in {
+in
+{
   options.features.desktop.hyprland.enable = mkEnableOption "hyprland config";
 
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.system}.default;
-      plugins = [split-monitor-workspaces];
+      # plugins = [split-monitor-workspaces];
       settings = {
         exec-once = [
           "waybar"
