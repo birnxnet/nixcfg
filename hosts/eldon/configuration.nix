@@ -1,9 +1,11 @@
-{pkgs, ...}: let
-  berkeley-mono-typeface = pkgs.callPackage ../../pkgs/berkeley-mono {inherit pkgs;};
+
+{ pkgs, ... } : 
+
+let
+  berkeley-mono-typeface = pkgs.callPackage ../../pkgs/berkeley-mono 
+        { inherit pkgs; };
 in {
-  imports = [
-    ./hardware-configuration.nix
-  ];
+  imports = [./hardware-configuration.nix ];
 
   boot = {
     loader.timeout = 1;
@@ -78,8 +80,9 @@ in {
     };
   };
 
+
+    fonts.packages = with pkgs; = [ berkeley-mono-typeface ];
   fonts = {
-    packages = [pkgs.berkeley-mono-typeface];
     fontDir.enable = true;
     enableGhostscriptFonts = true;
   };
