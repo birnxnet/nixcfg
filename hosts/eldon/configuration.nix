@@ -1,12 +1,16 @@
 {
-  inputs,
   pkgs,
   ...
-}: let
-  berkeley-mono-typeface =
-    pkgs.callPackage ../../pkgs/berkeley-mono/default.nix
-    {inherit pkgs;};
-in {
+}:
+
+let
+  callPackage = pkg: pkgs.callPackage pkg;
+in
+{
+berkeley-mono-typeface = callPackage ../../pkgs { };
+}
+
+  {
   imports = [./hardware-configuration.nix];
 
   boot = {
@@ -82,10 +86,25 @@ in {
     };
   };
 
-  # fonts.packages with pkgs  berkeley-mono-typeface;
   fonts = {
     fontDir.enable = true;
     enableGhostscriptFonts = true;
+    packages = with pkgs; [
+      berkeley-mono-typeface
+      cantarell-fonts
+      hack-font
+      inter
+      fira-code
+      nerd-fonts.fira-code
+      nerd-fonts.jetbrains-mono
+      font-manager
+      font-awesome_5
+      noto-fonts
+      noto-fonts-color-emoji
+      liberation_ttf
+      monaspace
+      ubuntu_font_family
+    ];
   };
 
   services = {
@@ -140,13 +159,11 @@ in {
   };
 
   environment.systemPackages = with pkgs; [
-    berkeley-mono-typeface
     fishPlugins.hydro
     fishPlugins.transient-fish
     git
     nh
     brave
-    inputs.nvix.packages.${system}.base.extend
   ];
 
   environment.variables = {

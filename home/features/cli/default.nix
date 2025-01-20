@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     # ./nvf.nix
     ./fish.nix
@@ -34,6 +38,7 @@
 
   home.packages = with pkgs; [
     coreutils
+    inputs.nvix.packages.${pkgs.system}.default
     zellij
     fd
     btop
