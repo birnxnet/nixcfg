@@ -1,22 +1,21 @@
-{pkgs}:
-pkgs.stdenv.mkDerivation {
+{
+  stdenvNoCC,
+  lib,
+}:
+stdenvNoCC.mkDerivation {
   pname = "berkeley-mono-typeface";
   version = "2.002";
-
-  src = ./berkeley-mono.zip;
-
-  unpackPhase = ''
-    runHook preUnpack
-    ${pkgs.unzip}/bin/unzip $src
-
-    runHook postUnpack
-  '';
+  src = ./.;
 
   installPhase = ''
-    runHook preInstall
-
-    install -Dm644 berkeley-mono/*.ttf -t $out/share/fonts/truetype
-
-    runHook postInstall
+    mkdir -p $out/share/fonts/truetype/
+    cp -r $src/*.{ttf,otf} $out/share/fonts/truetype/
   '';
+
+  meta = with lib; {
+    description = "berkeley mono nerd font";
+    homepage = "https://www.usgraphics.com/";
+    platforms = platforms.all;
+  };
 }
+
