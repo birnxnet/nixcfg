@@ -79,7 +79,7 @@ in {
   };
 
   fonts = {
-    packages = [pkgs.berkeley-mono-typeface];
+    packages = [berkeley-mono-typeface];
     fontDir.enable = true;
     enableGhostscriptFonts = true;
   };
