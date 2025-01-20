@@ -81,7 +81,7 @@ in {
   fonts = {
     fontDir.enable = true;
     enableGhostscriptFonts = true;
-    packages = with pkgs; [berkeley-mono-typeface];
+    # packages = [pkgs.berkeley-mono-typeface];
   };
 
   services = {
