@@ -26,8 +26,11 @@
       url = "github:Duckonaut/split-monitor-workspaces";
       inputs.hyprland.follows = "hyprland";
     };
-    # nv.url = "github:birnx/nv";
+  inputs.nvix = {
+    url = "github:niksingh710/nvix";
+    inputs.nixpkgs.follows = "nixpkgs";
     nvf.url = "github:notashelf/nvf";
+    # nv.url = "github:birnx/nv";
   };
 
   outputs = {

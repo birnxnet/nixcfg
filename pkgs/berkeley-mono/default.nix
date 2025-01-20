@@ -1,8 +1,9 @@
 {
   stdenvNoCC,
   lib,
+  pkgs,
 }:
-stdenvNoCC.mkDerivation {
+pkgs.mkDerivation {
   pname = "berkeley-mono-typeface";
   version = "2.002";
   src = ./.;
@@ -23,4 +24,3 @@ stdenvNoCC.mkDerivation {
     platforms = platforms.all;
   };
 }
-

@@ -1,6 +1,6 @@
 {pkgs, ...}: let
   berkeley-mono-typeface =
-    pkgs.callPackage ../../pkgs/berkeley-mono
+    pkgs.callPackage ../../pkgs/berkeley-mono/default.nix
     {inherit pkgs;};
 in {
   imports = [./hardware-configuration.nix];
@@ -131,12 +131,13 @@ in {
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    berkeley-mono-typeface
+    # berkeley-mono-typeface
     fishPlugins.hydro
     fishPlugins.transient-fish
     git
     nh
     brave
+    inputs.nvix.packages.${system}.default
   ];
 
   environment.variables = {
