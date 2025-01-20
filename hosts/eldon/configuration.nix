@@ -4,9 +4,16 @@
   ];
 
   boot = {
+    loader.timeout = 1;
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    kernelParams = [
+      "systemd.mask=systemd-vconsole-setup.service"
+      "systemd.mask=dev-tpmrm0.device"
+      "nowatchdog"
+      "modprobe.blacklist=sp5100_tco"
+    ];
   };
 
   networking.hostName = "eldon";
@@ -16,6 +23,12 @@
     bluetooth = {
       enable = true;
       powerOnBoot = true;
+      settings = {
+        General = {
+          Enable = "Source,Sink,Media,Socket";
+          Experimental = true;
+        };
+      };
     };
   };
 
@@ -41,11 +54,31 @@
     _1password = {
       enable = true;
     };
+    thunar.enable = true;
+    thunar.plugins = with pkgs.xfce; [
+      exo
+      mousepad
+      thunar-archive-plugin
+      thunar-volman
+      tumbler
+    ];
 
     foot.enable = true;
     fish = {
       enable = true;
     };
+    dconf.enable = true;
+    seahorse.enable = true;
+    mtr.enable = true;
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
+  };
+
+  fonts = {
+    fontDir.enable = true;
+    enableGhostscriptFonts = true;
   };
 
   services = {
@@ -53,20 +86,44 @@
       layout = "us";
       variant = "";
     };
+    smartd = {
+      enable = false;
+      autodetect = true;
+    };
 
     blueman.enable = true;
+    gvfs.enable = true;
+    tumbler.enable = true;
 
     pipewire = {
       enable = true;
       pulse.enable = true;
+      wireplumber.enable = true;
       alsa = {
         enable = true;
         support32Bit = true;
       };
     };
+
+    pulseaudio.enable = false;
+
+    udev.enable = true;
+    envfs.enable = true;
+    dbus.enable = true;
+    libinput.enable = true;
+    fwupd.enable = true;
+    upower.enable = true;
+    gnome.gnome-keyring.enable = true;
+
+    fstrim = {
+      enable = true;
+      interval = "weekly";
+    };
   };
 
   security.sudo.wheelNeedsPassword = false;
+  security.rtkit.enable = true;
+  security.polkit.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 
@@ -81,6 +138,10 @@
     brave
     # inputs.nv.packages.${pkgs.system}.default
   ];
+
+  environment.variables = {
+    NIXOS_OZONE_WL = "1";
+  };
 
   programs = {
     hyprland = {
