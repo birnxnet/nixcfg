@@ -8,7 +8,7 @@
 with lib;
 let
   cfg = config.features.desktop.hyprland;
-  inherit (inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprsplit)
+  inherit (inputs.hyprsplit.packages.${pkgs.stdenv.hostPlatform.system})
     hyprsplit
     ;
 in
