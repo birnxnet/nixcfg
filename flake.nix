@@ -8,7 +8,7 @@
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    hyprland.url = "github:hyprwm/Hyprland";
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
@@ -21,13 +21,16 @@
       url = "github:birnx/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hyprsplit = {
+      url = "github:shezdy/hyprsplit";
+      inputs.hyprland.follows = "hyprland";
+    };
   };
 
   outputs =
     {
       self,
       home-manager,
-      hyprland,
       nixpkgs,
       ...
     }@inputs:

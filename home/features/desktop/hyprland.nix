@@ -8,9 +8,6 @@
 with lib;
 let
   cfg = config.features.desktop.hyprland;
-  inherit (inputs.hyprsplit.packages.${pkgs.stdenv.hostPlatform.system})
-    hyprsplit
-    ;
 in
 {
   options.features.desktop.hyprland.enable = mkEnableOption "hyprland config";
@@ -19,7 +16,6 @@ in
     wayland.windowManager.hyprland = {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-      plugins = [ hyprsplit ];
       settings = {
         exec-once = [
           "waybar"
