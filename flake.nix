@@ -1,5 +1,5 @@
 {
-  description = '''';
+  description = ''ui'';
 
   inputs = {
     home-manager = {
@@ -8,17 +8,13 @@
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
     split-monitor-workspaces = {
       url = "github:Duckonaut/split-monitor-workspaces";
-      inputs.hyprland.follows = "hyprland";
-    };
-    hyprsplit = {
-      url = "github:shezdy/hyprsplit";
       inputs.hyprland.follows = "hyprland";
     };
     khanelivim = {
@@ -31,6 +27,7 @@
     {
       self,
       home-manager,
+      hyprland,
       nixpkgs,
       ...
     }@inputs:
@@ -62,7 +59,6 @@
           pkgs = nixpkgs.legacyPackages."x86_64-linux";
           extraSpecialArgs = { inherit inputs outputs; };
           modules = [
-            # nvf.homeManagerModules.default
             ./home/birnx/eldon.nix
           ];
         };
