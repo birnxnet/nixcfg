@@ -4,12 +4,6 @@
   ...
 }:
 
-# let
-#   berkeley-mono-typeface = pkgs.callPackage ../../../pkgs/berkeley-mono/berkeley.nix {
-#     inherit pkgs;
-#   };
-# in
-
 {
   imports = [ ./hardware-configuration.nix ];
 
