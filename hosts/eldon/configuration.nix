@@ -153,6 +153,7 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    hyprlandPlugins.hyprsplit
     fishPlugins.hydro
     fishPlugins.transient-fish
     git
@@ -161,7 +162,7 @@
   ];
 
   environment.variables = {
-    NIXOS_OZONE_WL = "1";
+    # NIXOS_OZONE_WL = "1";
   };
 
   programs = {

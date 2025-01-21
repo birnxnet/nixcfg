@@ -7,10 +7,8 @@
 }:
 with lib;
 let
+  inherit (inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland) hyprsplit;
   cfg = config.features.desktop.hyprland;
-  inherit (inputs.split-monitor-workspaces.packages.${pkgs.system})
-    split-monitor-workspaces
-    ;
 in
 {
   options.features.desktop.hyprland.enable = mkEnableOption "hyprland config";
@@ -18,8 +16,8 @@ in
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {
       enable = true;
-      package = inputs.hyprland.packages.${pkgs.system}.default;
-      # plugins = [split-monitor-workspaces];
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      plugins = [ hyprsplit ];
       settings = {
         exec-once = [
           "waybar"
@@ -96,11 +94,8 @@ in
         };
 
         plugin = {
-          split-monitor-workspaces = {
-            count = 6;
-            keep_focused = 0;
-            enable_notifications = 0;
-            enable_persistent_workspaces = 0;
+          hyprsplit = {
+            num_workspaces = 6;
           };
         };
 
@@ -135,24 +130,24 @@ in
           "$modifier ,l,movefocus,r"
           "$modifier ,k,movefocus,u"
           "$modifier ,j,movefocus,d"
-          "$modifier CONTROL,j,split-workspace,1"
-          "$modifier CONTROL,k,split-workspace,2"
-          "$modifier CONTROL,l,split-workspace,3"
-          "$modifier CONTROL,u,split-workspace,4"
-          "$modifier CONTROL,i,split-workspace,5"
-          "$modifier CONTROL,o,split-workspace,6"
-          "$modifier SHIFT,SPACE,split-movetoworkspacesilent,special"
+          "$modifier CONTROL,j,split:workspace,1"
+          "$modifier CONTROL,k,split:workspace,2"
+          "$modifier CONTROL,l,split:workspace,3"
+          "$modifier CONTROL,u,split:workspace,4"
+          "$modifier CONTROL,i,split:workspace,5"
+          "$modifier CONTROL,o,split:workspace,6"
+          "$modifier SHIFT,SPACE,split:movetoworkspacesilent,special"
           "$modifier ,SPACE,togglespecialworkspace"
-          "$modifier ALT,j,split-movetoworkspacesilent,1"
-          "$modifier ALT,k,split-movetoworkspacesilent,2"
-          "$modifier ALT,l,split-movetoworkspacesilent,3"
-          "$modifier ALT,u,split-movetoworkspacesilent,4"
-          "$modifier ALT,i,split-movetoworkspacesilent,5"
-          "$modifier ALT,o,split-movetoworkspacesilent,6"
-          "$modifier CONTROL,right,split-workspace,e+1"
-          "$modifier CONTROL,left,split-workspace,e-1"
-          "$modifier ,mouse_down,split-workspace,e+1"
-          "$modifier ,mouse_up,split-workspace,e-1"
+          "$modifier ALT,j,split:movetoworkspacesilent,1"
+          "$modifier ALT,k,split:movetoworkspacesilent,2"
+          "$modifier ALT,l,split:movetoworkspacesilent,3"
+          "$modifier ALT,u,split:movetoworkspacesilent,4"
+          "$modifier ALT,i,split:movetoworkspacesilent,5"
+          "$modifier ALT,o,split:movetoworkspacesilent,6"
+          "$modifier CONTROL,right,split:workspace,e+1"
+          "$modifier CONTROL,left,split:workspace,e-1"
+          "$modifier ,mouse_down,split:workspace,e+1"
+          "$modifier ,mouse_up,split:workspace,e-1"
         ];
 
         bindm = [

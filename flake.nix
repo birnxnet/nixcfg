@@ -1,14 +1,5 @@
 {
-  description = ''
-    For questions just DM me on X: https://twitter.com/@m3tam3re
-    There is also some NIXOS content on my YT channel: https://www.youtube.com/@m3tam3re
-
-    One of the best ways to learn NIXOS is to read other peoples configurations. I have personally learned a lot from Gabriel Fontes configs:
-    https://github.com/Misterio77/nix-starter-configs
-    https://github.com/Misterio77/nix-config
-
-    Please also check out the starter configs mentioned above.
-  '';
+  description = '''';
 
   inputs = {
     home-manager = {
@@ -26,6 +17,10 @@
       url = "github:Duckonaut/split-monitor-workspaces";
       inputs.hyprland.follows = "hyprland";
     };
+    hyprsplit = {
+      url = "github:shezdy/hyprsplit";
+      inputs.hyprland.follows = "hyprland";
+    };
     khanelivim = {
       url = "github:birnx/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -35,7 +30,6 @@
   outputs =
     {
       self,
-      khanelivim,
       home-manager,
       nixpkgs,
       ...
