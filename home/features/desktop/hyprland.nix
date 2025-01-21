@@ -7,8 +7,10 @@
 }:
 with lib;
 let
-  inherit (inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland) hyprsplit;
   cfg = config.features.desktop.hyprland;
+  inherit (inputs.hyprsplit.packages.${pkgs.system})
+    hyprsplit
+    ;
 in
 {
   options.features.desktop.hyprland.enable = mkEnableOption "hyprland config";
