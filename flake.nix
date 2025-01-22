@@ -8,7 +8,7 @@
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
-    hyprland.url = "github:hyprwm/Hyprland/tree/v0.46.2";
+    hyprland.url = "github:hyprwm/Hyprland";
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
@@ -63,6 +63,12 @@
           extraSpecialArgs = { inherit inputs outputs; };
           modules = [
             ./home/birnx/eldon.nix
+            # {
+            #   wayland.windowManager.hyprland = {
+            #     enable = true;
+            #     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+            #   };
+            # }
           ];
         };
       };

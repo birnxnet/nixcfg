@@ -8,9 +8,6 @@
 with lib;
 let
   cfg = config.features.desktop.hyprland;
-  inherit (inputs.split-monitor-workspaces.packages.${pkgs.system})
-    split-monitor-workspaces
-    ;
 in
 {
 
@@ -19,8 +16,11 @@ in
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {
       enable = true;
+      systemd.variables = [ "--all" ];
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-      plugins = [ split-monitor-workspaces ];
+      plugins = [
+        inputs.split-monitor-workspaces.packages.${pkgs.stdenv.hostPlatform.system}.split-monitor-workspaces
+      ];
       settings = {
         exec-once = [
           "waybar"
