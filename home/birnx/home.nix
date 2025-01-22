@@ -1,15 +1,19 @@
 {
+  inputs,
   config,
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   home.username = lib.mkDefault "birnx";
   home.homeDirectory = lib.mkDefault "/home/${config.home.username}";
 
-  home.stateVersion = "24.05";
+  wayland.windowManager.hyprland.plugins = [
+    inputs.split-monitor-workspaces.packages.${pkgs.stdenv.hostPlatform.system}.split-monitor-workspaces
+  ];
 
-  # programs.nvf.enable = true;
+  home.stateVersion = "24.05";
 
   home.packages = with pkgs; [
     obsidian

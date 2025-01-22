@@ -8,9 +8,6 @@
 with lib;
 let
   cfg = config.features.desktop.hyprland;
-  inherit (inputs.split-monitor-workspaces.packages.${pkgs.system})
-    split-monitor-workspaces
-    ;
 in
 {
 
@@ -21,10 +18,9 @@ in
       enable = true;
       systemd.variables = [ "--all" ];
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-      plugins = [ split-monitor-workspaces ];
+      #  plugins = [ split-monitor-workspaces ];
       settings = {
         exec-once = [
-          "waybar"
         ];
 
         monitor = [
@@ -99,12 +95,12 @@ in
 
         plugin = {
           split-monitor-workspaces = {
-        count = 6;
-        keep_focused = 0;
-        enable_notifications = 0;
-        enable_persistent_workspaces = 1;
-      };
-    };
+            count = 6;
+            keep_focused = 0;
+            enable_notifications = 0;
+            enable_persistent_workspaces = 1;
+          };
+        };
 
         dwindle = {
           pseudotile = true;
