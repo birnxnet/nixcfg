@@ -21,16 +21,13 @@
       url = "github:birnx/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprsplit = {
-      url = "github:shezdy/hyprsplit";
-      inputs.hyprland.follows = "hyprland";
-    };
   };
 
   outputs =
     {
       self,
       home-manager,
+      hyprland,
       nixpkgs,
       ...
     }@inputs:
@@ -62,17 +59,8 @@
           extraSpecialArgs = { inherit inputs outputs; };
           modules = [
             ./home/birnx/eldon.nix
-<<<<<<< Updated upstream
-            # {
-            #   wayland.windowManager.hyprland = {
-            #     enable = true;
-            #     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-            #   };
-            # }
-=======
             hyprland.homeManagerModules.default
             { wayland.windowManager.hyprland.enable = true; }
->>>>>>> Stashed changes
           ];
         };
       };

@@ -21,13 +21,7 @@ in
       enable = true;
       systemd.variables = [ "--all" ];
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-<<<<<<< Updated upstream
-      plugins = [
-        inputs.split-monitor-workspaces.packages.${pkgs.stdenv.hostPlatform.system}.split-monitor-workspaces
-      ];
-=======
       plugins = [ split-monitor-workspaces ];
->>>>>>> Stashed changes
       settings = {
         exec-once = [
           "waybar"
@@ -103,11 +97,14 @@ in
           };
         };
 
-        # plugin = {
-        #   split-monitor-spaces = {
-        #     num_workspaces = 6;
-        #   };
-        # };
+        plugin {
+          split-monitor-workspaces {
+        count = 6;
+        keep_focused = 0;
+        enable_notifications = 0;
+        enable_persistent_workspaces = 1;
+      }
+    }
 
         dwindle = {
           pseudotile = true;
