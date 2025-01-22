@@ -52,8 +52,7 @@
         eldon = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
           modules = [
-            # nvf.nixosModules.default
-            ./hosts/eldon
+            ./hosts/eldon/configuration.nix
           ];
         };
       };
@@ -63,12 +62,17 @@
           extraSpecialArgs = { inherit inputs outputs; };
           modules = [
             ./home/birnx/eldon.nix
+<<<<<<< Updated upstream
             # {
             #   wayland.windowManager.hyprland = {
             #     enable = true;
             #     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
             #   };
             # }
+=======
+            hyprland.homeManagerModules.default
+            { wayland.windowManager.hyprland.enable = true; }
+>>>>>>> Stashed changes
           ];
         };
       };

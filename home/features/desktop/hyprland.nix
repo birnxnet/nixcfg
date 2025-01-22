@@ -8,6 +8,9 @@
 with lib;
 let
   cfg = config.features.desktop.hyprland;
+  inherit (inputs.split-monitor-workspaces.packages.${pkgs.system})
+    split-monitor-workspaces
+    ;
 in
 {
 
@@ -18,9 +21,13 @@ in
       enable = true;
       systemd.variables = [ "--all" ];
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+<<<<<<< Updated upstream
       plugins = [
         inputs.split-monitor-workspaces.packages.${pkgs.stdenv.hostPlatform.system}.split-monitor-workspaces
       ];
+=======
+      plugins = [ split-monitor-workspaces ];
+>>>>>>> Stashed changes
       settings = {
         exec-once = [
           "waybar"
@@ -96,11 +103,11 @@ in
           };
         };
 
-        plugin = {
-          hyprsplit = {
-            num_workspaces = 6;
-          };
-        };
+        # plugin = {
+        #   split-monitor-spaces = {
+        #     num_workspaces = 6;
+        #   };
+        # };
 
         dwindle = {
           pseudotile = true;
