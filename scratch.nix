@@ -1,1 +1,5 @@
-0 bd541f2fd902dbfa04c3ea2ccf679395e316887 0 bd541f2fd902dbfa04c3ea2ccf679395e316887
+
+
+(inputs.split-monitor-workspaces.packages.${pkgs.system})
+    split-monitor-workspaces
+    ;
