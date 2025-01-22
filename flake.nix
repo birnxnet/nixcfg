@@ -49,7 +49,7 @@
         eldon = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
           modules = [
-            ./hosts/eldon/configuration.nix
+            ./hosts/eldon
           ];
         };
       };

@@ -97,14 +97,14 @@ in
           };
         };
 
-        plugin {
-          split-monitor-workspaces {
+        plugin = {
+          split-monitor-workspaces = {
         count = 6;
         keep_focused = 0;
         enable_notifications = 0;
         enable_persistent_workspaces = 1;
-      }
-    }
+      };
+    };
 
         dwindle = {
           pseudotile = true;
