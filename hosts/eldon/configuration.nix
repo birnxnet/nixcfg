@@ -10,6 +10,7 @@
   boot = {
     loader.timeout = 1;
     loader.systemd-boot.enable = true;
+    initrd.systemd.dbus.enable = true;
     loader.efi.canTouchEfiVariables = true;
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     kernelParams = [
@@ -17,6 +18,7 @@
       "systemd.mask=dev-tpmrm0.device"
       "nowatchdog"
       "modprobe.blacklist=sp5100_tco"
+
     ];
   };
 
@@ -139,6 +141,14 @@
       enable = true;
       interval = "weekly";
     };
+
+    dbus = {
+      implementation = "broker";
+      packages = with pkgs; [
+        gcr_4
+        gnome-settings-daemon
+      ];
+    };
   };
 
   security.sudo.wheelNeedsPassword = false;
@@ -157,7 +167,7 @@
   ];
 
   environment.variables = {
-    # NIXOS_OZONE_WL = "1";
+    NIXOS_OZONE_WL = "1";
   };
 
   programs = {
@@ -166,6 +176,7 @@
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
       xwayland.enable = true;
       portalPackage = pkgs.xdg-desktop-portal-hyprland;
+
     };
   };
 

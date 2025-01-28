@@ -18,7 +18,7 @@
   home.packages = with pkgs; [
     obsidian
     rofi-wayland
-    hyprlandPlugins.hyprsplit
+    # hyprlandPlugins.hyprsplit
   ];
 
   home.file = {
