@@ -1,12 +1,14 @@
 {
-config,
-lib,
-...
+  config,
+  lib,
+  ...
 }:
 
-with lib; let
+with lib;
+let
   cfg = config.features.cli.ghostty;
-in{
+in
+{
   options.features.cli.ghostty.enable = mkEnableOption "enable ghostty";
 
   config = mkIf cfg.enable {
@@ -23,15 +25,18 @@ in{
         font-family-italic = "JetBrainsMono NF Medium Italic";
         font-family-bold-italic = "JetBrainsMono NF Medium Bold Italic";
         cursor-style = "block";
+        # cursor-opacity = 0.73;
         cursor-style-blink = true;
         mouse-hide-while-typing = true;
         # initial-command = "-e zellij";
-        window-padding-x = 5;
-        window-padding-y = 6;
+        window-padding-x = 3;
+        window-padding-y = 4;
         window-decoration = false;
         shell-integration = "fish";
+        linux-cgroup = "always";
+        resize-overlay = "never";
+        confirm-close-surface = false;
       };
     };
   };
 }
-

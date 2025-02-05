@@ -39,10 +39,25 @@
     lazygit = {
       enable = true;
     };
+
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+      # enableFishIntegration = true;
+    };
+
+    mpv = {
+      enable = true;
+      defaultProfiles = [ "gpu-hq" ];
+      scripts = [ pkgs.mpvScripts.mpris ];
+    };
   };
 
   home.packages = with pkgs; [
     coreutils
+    pulsemixer
+    pwvucontrol
+    loupe
     inputs.khanelivim.packages.${pkgs.system}.default
     zellij
     fd

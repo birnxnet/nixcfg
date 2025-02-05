@@ -21,8 +21,11 @@
       url = "github:birnx/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    timr = {
+      url = "github:sectore/timr-tui";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
-
   outputs =
     {
       self,

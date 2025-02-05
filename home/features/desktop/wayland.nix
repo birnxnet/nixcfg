@@ -4,15 +4,17 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.features.desktop.wayland;
-in {
+in
+{
   options.features.desktop.wayland.enable = mkEnableOption "wayland config and tools";
 
   config = mkIf cfg.enable {
     programs.waybar = {
       enable = true;
-        # modules-center = [ "hyprland/workspaces" ];
+      # modules-center = [ "hyprland/workspaces" ];
       # "hyprland/workspaces" = {
       #     format = "{name}";
       #     format-icons = {
@@ -20,7 +22,7 @@ in {
       #       active = " ";
       #       urgent = " ";
       #     };
-       # };
+      # };
       style = ''
         @define-color background-darker rgba(30, 31, 41, 230);
         @define-color background #282a36;
@@ -192,8 +194,11 @@ in {
           passthrough = false;
           gtk-layer-shell = true;
           height = 0;
-          modules-left = ["clock" "custom/weather"];
-          modules-center = ["hyprland/workspaces"];
+          modules-left = [
+            "clock"
+            "custom/weather"
+          ];
+          modules-center = [ "hyprland/workspaces" ];
           modules-right = [
             "tray"
           ];
@@ -210,10 +215,10 @@ in {
             on-scroll-up = "hyprctl dispatch workspace e+1";
             on-scroll-down = "hyprctl dispatch workspace e-1";
             format-icons = {
-             default = " ";
-             active = " ";
-             urgent = " ";
-          };
+              default = " ";
+              active = " ";
+              urgent = " ";
+            };
             # persistent_workspaces = {
             #   "1" = [];
             #   "2" = [];
@@ -229,7 +234,7 @@ in {
             return-type = "json";
           };
           tray = {
-            icon-size = 13;
+            icon-size = 16;
             spacing = 10;
           };
           clock = {
@@ -241,6 +246,14 @@ in {
     };
 
     home.packages = with pkgs; [
+      kdePackages.qt6ct
+      catppuccin-kvantum
+      nwg-look
+      vesktop
+      discordo
+      wavebox
+      pavucontrol
+      overskride
       grim
       hyprlock
       qt6.qtwayland

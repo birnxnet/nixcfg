@@ -18,7 +18,9 @@
   home.packages = with pkgs; [
     obsidian
     rofi-wayland
-    # hyprlandPlugins.hyprsplit
+    todoist
+    todoist-electron
+    inputs.timr.packages.${pkgs.stdenv.hostPlatform.system}.timr
   ];
 
   home.file = {

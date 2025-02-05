@@ -18,9 +18,9 @@ in
       enable = true;
       systemd.variables = [ "--all" ];
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-      #  plugins = [ split-monitor-workspaces ];
       settings = {
         exec-once = [
+          "waybar"
         ];
 
         monitor = [
@@ -29,6 +29,10 @@ in
           "HDMI-A-2,3840x2160@119.9,0x0,1,transform,1"
           "DP-6,3840x2160@59.9,7280x0,1,transform,3"
         ];
+
+        xwayland = {
+          force_zero_scaling = true;
+        };
 
         general = {
           gaps_in = 6;
@@ -98,7 +102,7 @@ in
             count = 6;
             keep_focused = 0;
             enable_notifications = 0;
-            enable_persistent_workspaces = 1;
+            enable_persistent_workspaces = 0;
           };
         };
 

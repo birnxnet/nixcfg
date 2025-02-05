@@ -9,8 +9,15 @@
 
   boot = {
     loader.timeout = 1;
-    loader.systemd-boot.enable = true;
-    initrd.systemd.dbus.enable = true;
+    loader.systemd-boot = {
+      enable = true;
+      consoleMode = "2";
+    };
+    initrd.verbose = false;
+    initrd.systemd = {
+      enable = true;
+      dbus.enable = true;
+    };
     loader.efi.canTouchEfiVariables = true;
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     kernelParams = [
@@ -18,9 +25,13 @@
       "systemd.mask=dev-tpmrm0.device"
       "nowatchdog"
       "modprobe.blacklist=sp5100_tco"
-
+      "quiet"
+      "systemd.show_status=auto"
+      "rd.udev.log_level=3"
     ];
   };
+
+  hardware.cpu.amd.updateMicrocode = true;
 
   networking.hostName = "eldon";
   networking.networkmanager.enable = true;
