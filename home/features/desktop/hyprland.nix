@@ -19,10 +19,17 @@ in
       systemd.variables = [ "--all" ];
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
       settings = {
+        env = [
+          "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+          "env = GDK_BACKEND,wayland,x11,*"
+          "env = QT_QPA_PLATFORM,wayland;xcb"
+          "env = SDL_VIDEODRIVER,wayland"
+          "env = CLUTTER_BACKEND,wayland"
+          "env = AQ_DRM_DEVICES,/dev/dri/card0:/dev/dri/card1"
+        ];
         exec-once = [
           "waybar"
         ];
-
         monitor = [
           "DP-3,5120x1440@239.7,2160x2400,1"
           "DP-4,5120x1440@119.9,2160x960,1,transform,2"

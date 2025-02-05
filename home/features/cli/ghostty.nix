@@ -25,7 +25,7 @@ in
         font-family-italic = "JetBrainsMono NF Medium Italic";
         font-family-bold-italic = "JetBrainsMono NF Medium Bold Italic";
         cursor-style = "block";
-        # cursor-opacity = 0.73;
+        cursor-opacity = 0.73;
         cursor-style-blink = true;
         mouse-hide-while-typing = true;
         # initial-command = "-e zellij";
@@ -33,7 +33,7 @@ in
         window-padding-y = 4;
         window-decoration = false;
         shell-integration = "fish";
-        linux-cgroup = "always";
+        # linux-cgroup = "always";
         resize-overlay = "never";
         confirm-close-surface = false;
       };

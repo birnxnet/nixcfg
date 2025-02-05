@@ -21,6 +21,16 @@
     todoist
     todoist-electron
     inputs.timr.packages.${pkgs.stdenv.hostPlatform.system}.timr
+    yt-dlp
+    ffmpeg-full
+    spotify
+    spotifyd
+    spotify-player
+    slskd
+    nicoine-plus
+    mullvad
+    mullvad-vpn
+    timer
   ];
 
   home.file = {
