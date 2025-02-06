@@ -40,14 +40,21 @@
     bluetooth = {
       enable = true;
       powerOnBoot = true;
+      package = pkgs.bluez5-experimental;
       settings = {
         General = {
           Enable = "Source,Sink,Media,Socket";
+          ControllerMode = "bredr";
+          FastConnectable = true;
+          JustWorksRepairing = "always";
+          Privacy = "device";
           Experimental = true;
         };
       };
     };
   };
+
+  systemd.user.services.telephony_client.enable = false;
 
   time.timeZone = "America/Los_Angeles";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -96,22 +103,6 @@
   fonts = {
     fontDir.enable = true;
     enableGhostscriptFonts = true;
-    packages = with pkgs; [
-      # berkeley-mono-typeface
-      cantarell-fonts
-      hack-font
-      inter
-      fira-code
-      nerd-fonts.fira-code
-      nerd-fonts.jetbrains-mono
-      font-manager
-      font-awesome_5
-      noto-fonts
-      noto-fonts-color-emoji
-      liberation_ttf
-      monaspace
-      ubuntu_font_family
-    ];
   };
 
   services = {
@@ -191,6 +182,22 @@
     };
   };
 
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    config = {
+      common.default = [ "gtk" ];
+      hyprland.default = [
+        "gtk"
+        "hyprland"
+      ];
+    };
+
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+    ];
+  };
+
   services.openssh.enable = true;
 
   nix = {
@@ -219,11 +226,19 @@
   hardware = {
     graphics = {
       enable = true;
+      extraPackages = with pkgs; [
+        mesa
+        libva
+        libvdpau-va-gl
+      ];
       enable32Bit = true;
+      extraPackages32 = with pkgs.pkgsi686Linux; [
+        libvdpau-va-gl
+      ];
+
     };
     amdgpu = {
       initrd.enable = true;
-      # opencl.enable = true;
       amdvlk.enable = true;
     };
   };

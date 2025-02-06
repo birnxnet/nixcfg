@@ -16,7 +16,14 @@ in
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {
       enable = true;
-      systemd.variables = [ "--all" ];
+      systemd = {
+        enable = true;
+        variables = [ "--all" ];
+        extraCommands = [
+          "systemctl --user stop graphical-session.target"
+          "systemctl --user start hyprland-session.target"
+        ];
+      };
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
       settings = {
         env = [

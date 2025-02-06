@@ -27,8 +27,8 @@
     spotifyd
     spotify-player
     slskd
-    nicoine-plus
-    mullvad
+    nicotine-plus
+    # mullvad
     mullvad-vpn
     timer
   ];
