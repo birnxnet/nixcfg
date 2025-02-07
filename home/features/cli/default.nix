@@ -14,6 +14,10 @@
     zoxide = {
       enable = true;
       enableFishIntegration = true;
+      options = [
+        "--cmd cd"
+        "--hook prompt"
+      ];
     };
 
     eza = {
