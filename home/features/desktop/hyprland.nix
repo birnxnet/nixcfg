@@ -1,6 +1,4 @@
 {
-  inputs,
-  pkgs,
   config,
   lib,
   ...
@@ -17,22 +15,21 @@ in
     wayland.windowManager.hyprland = {
       enable = true;
       systemd = {
-        enable = true;
         variables = [ "--all" ];
         extraCommands = [
           "systemctl --user stop graphical-session.target"
           "systemctl --user start hyprland-session.target"
         ];
       };
-      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+
       settings = {
         env = [
           "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
-          "env = GDK_BACKEND,wayland,x11,*"
-          "env = QT_QPA_PLATFORM,wayland;xcb"
-          "env = SDL_VIDEODRIVER,wayland"
-          "env = CLUTTER_BACKEND,wayland"
-          "env = AQ_DRM_DEVICES,/dev/dri/card0:/dev/dri/card1"
+          "GDK_BACKEND,wayland,x11,*"
+          "QT_QPA_PLATFORM,wayland;xcb"
+          "SDL_VIDEODRIVER,wayland"
+          "CLUTTER_BACKEND,wayland"
+          "AQ_DRM_DEVICES,/dev/dri/card0:/dev/dri/card1"
         ];
         exec-once = [
           "waybar"
