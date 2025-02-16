@@ -21,8 +21,15 @@
       url = "github:birnx/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    timr = {
-      url = "github:sectore/timr-tui";
+    # nvf = {
+    #   url = "github:birnx/nvf";
+    # };
+    # timr = {
+    #   url = "github:sectore/timr-tui";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -32,6 +39,7 @@
       home-manager,
       hyprland,
       nixpkgs,
+      # nvf,
       ...
     }@inputs:
     let
@@ -53,6 +61,8 @@
           specialArgs = { inherit inputs outputs; };
           modules = [
             ./hosts/eldon
+            hyprland.nixosModules.default
+            # nvf.nixosModules.default
           ];
         };
       };
@@ -63,6 +73,7 @@
           modules = [
             ./home/birnx/eldon.nix
             hyprland.homeManagerModules.default
+            # nvf.homeManagerModules.default
             { wayland.windowManager.hyprland.enable = true; }
           ];
         };

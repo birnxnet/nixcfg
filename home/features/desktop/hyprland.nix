@@ -1,5 +1,7 @@
 {
   config,
+  inputs,
+  pkgs,
   lib,
   ...
 }:
@@ -14,10 +16,13 @@ in
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {
       enable = true;
+      plugins = [
+        inputs.split-monitor-workspaces.packages.${pkgs.stdenv.hostPlatform.system}.split-monitor-workspaces
+      ];
       systemd = {
         variables = [ "--all" ];
         extraCommands = [
-          "systemctl --user stop graphical-session.target"
+          "systemctl --user stop hyprland-session.target"
           "systemctl --user start hyprland-session.target"
         ];
       };
@@ -70,8 +75,9 @@ in
           "noborder,^(rofi)$"
           "center,^(rofi)$"
           "float, blueman-manager"
-          "float, pavucontrol"
-          "float, nwg-look|qt5ct|mpv"
+          "float, pwvucontrol"
+          "float, overskride"
+          "float, nwg-look|qt6ct|mpv"
         ];
 
         windowrulev2 = [

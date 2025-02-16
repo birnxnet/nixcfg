@@ -9,18 +9,25 @@
   home.username = lib.mkDefault "birnx";
   home.homeDirectory = lib.mkDefault "/home/${config.home.username}";
 
-  wayland.windowManager.hyprland.plugins = [
-    inputs.split-monitor-workspaces.packages.${pkgs.stdenv.hostPlatform.system}.split-monitor-workspaces
+  imports = [
+    inputs.hyprland.homeManagerModules.default
   ];
 
   home.stateVersion = "24.05";
+
+  # programs = {
+  #   nvf = {
+  #     enable = true;
+  #   };
+  # };
 
   home.packages = with pkgs; [
     obsidian
     rofi-wayland
     todoist
     todoist-electron
-    inputs.timr.packages.${pkgs.stdenv.hostPlatform.system}.timr
+    # inputs.timr.packages.${pkgs.stdenv.hostPlatform.system}.timr
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.zen-browser
     yt-dlp
     ffmpeg-full
     spotify
@@ -31,6 +38,7 @@
     # mullvad
     mullvad-vpn
     timer
+    llm
   ];
 
   home.file = {
