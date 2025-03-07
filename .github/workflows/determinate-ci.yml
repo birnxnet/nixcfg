@@ -13,8 +13,14 @@ concurrency:
   cancel-in-progress: true
  
 jobs:
+  runs-on: 
+      group: 64s
   DeterminateCI:
     uses: DeterminateSystems/ci/.github/workflows/workflow.yml@main
     permissions:
       id-token: write
       contents: read
+    with:
+      enable-ssh-agent: true
+    secrets:
+      ssh-private-key: ${{ secrets.ss }}
