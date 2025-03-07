@@ -73,7 +73,7 @@
             ./home/birnx/eldon.nix
             hyprland.homeManagerModules.default
             # nvf.homeManagerModules.default
-            { wayland.windowManager.hyprland.enable = true; }
+            # { wayland.windowManager.hyprland.enable = true; }
           ];
         };
       };
