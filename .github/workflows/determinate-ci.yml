@@ -13,9 +13,7 @@ concurrency:
   cancel-in-progress: true
  
 jobs:
-  runs-on: 
-      group: 64s
-  DeterminateCI:
+   DeterminateCI:
     uses: DeterminateSystems/ci/.github/workflows/workflow.yml@main
     permissions:
       id-token: write
