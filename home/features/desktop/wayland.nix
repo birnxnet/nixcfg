@@ -209,15 +209,37 @@ in
           # };
           "hyprland/workspaces" = {
             disable-scroll = true;
-            # all-outputs = true;
+            all-outputs = false;
             on-click = "activate";
-            format = "{name}";
-            on-scroll-up = "hyprctl dispatch workspace e+1";
-            on-scroll-down = "hyprctl dispatch workspace e-1";
+            format = "{icon}";
             format-icons = {
-              default = " ";
-              active = " ";
-              urgent = " ";
+              "1" = "1";
+              "2" = "2";
+              "3" = "3";
+              "4" = "4";
+              "5" = "5";
+              "6" = "6";
+              "7" = "1";
+              "8" = "2";
+              "9" = "3";
+              "10" = "4";
+              "11" = "5";
+              "12" = "6";
+              "13" = "1";
+              "14" = "2";
+              "15" = "3";
+              "16" = "4";
+              "17" = "5";
+              "18" = "6";
+              "19" = "1";
+              "20" = "2";
+              "21" = "3";
+              "22" = "4";
+              "23" = "5";
+              "24" = "6";
+              # default = " ";
+              # active = " ";
+              # urgent = " ";
             };
             # persistent_workspaces = {
             #   "1" = [];
@@ -234,7 +256,7 @@ in
             return-type = "json";
           };
           tray = {
-            icon-size = 16;
+            icon-size = 20;
             spacing = 10;
           };
           clock = {

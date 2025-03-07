@@ -32,7 +32,9 @@ in
         ll = "eza";
         lg = "lazygit";
         fr = "nh os boot --hostname eldon ~/nixcfg";
+        frs = "nh os switch --hostname eldon ~/nixcfg";
         fu = "nh os boot --hostname eldon --update ~/nixcfg";
+        fus = "nh os switch --hostname eldon --update ~/nixcfg";
         grep = "rg";
         ps = "procs";
       };

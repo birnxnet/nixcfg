@@ -30,6 +30,7 @@ in
       settings = {
         env = [
           "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+          "QT_QPA_PLATFORMTHEME,qt6ct"
           "GDK_BACKEND,wayland,x11,*"
           "QT_QPA_PLATFORM,wayland;xcb"
           "SDL_VIDEODRIVER,wayland"
@@ -56,6 +57,12 @@ in
           border_size = 5;
           layout = "dwindle";
           resize_on_border = true;
+          snap = {
+            enabled = true;
+            window_gap = 15;
+            monitor_gap = 20;
+            border_overlap = true;
+          };
         };
 
         misc = {
@@ -76,7 +83,7 @@ in
           "center,^(rofi)$"
           "float, blueman-manager"
           "float, pwvucontrol"
-          "float, overskride"
+          "float, Overskride"
           "float, nwg-look|qt6ct|mpv"
         ];
 
@@ -118,7 +125,7 @@ in
           split-monitor-workspaces = {
             count = 6;
             keep_focused = 0;
-            enable_notifications = 0;
+            enable_notifications = 1;
             enable_persistent_workspaces = 0;
           };
         };
@@ -136,16 +143,15 @@ in
         bind = [
           "$modifier ,Return,exec,ghostty"
           "$modifier SHIFT,Return,exec,rofi -show drun"
-          "$modifier SHIFT,W,exec,brave --app=https://kagi.com"
-          "$modifier ,W,exec,brave"
+          # "$modifier SHIFT,W,exec,brave --app=https://kagi.com"
+          "$modifier ,W,exec,wavebox"
           "$modifier ,T,exec,thunar"
-          "$modifier ,Q,Killactive"
+          "$modifier ,C,Killactive"
           "$modifier ,P,pseudo"
           "$modifier SHIFT,I,togglesplit"
           "$modifier ,O,swapsplit"
           "$modifier ,F,fullscreen"
           "$modifier SHIFT,F,togglefloating"
-          "$modifier SHIFT,C,exit"
           "$modifier SHIFT,h,movewindow,l"
           "$modifier SHIFT,l,movewindow,r"
           "$modifier SHIFT,k,movewindow,u"

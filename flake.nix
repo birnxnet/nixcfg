@@ -24,14 +24,11 @@
     # nvf = {
     #   url = "github:birnx/nvf";
     # };
-    # timr = {
-    #   url = "github:sectore/timr-tui";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
   };
   outputs =
     {
@@ -39,6 +36,7 @@
       home-manager,
       hyprland,
       nixpkgs,
+      determinate,
       # nvf,
       ...
     }@inputs:
@@ -62,6 +60,7 @@
           modules = [
             ./hosts/eldon
             hyprland.nixosModules.default
+            determinate.nixosModules.default
             # nvf.nixosModules.default
           ];
         };
