@@ -71,7 +71,7 @@
           extraSpecialArgs = { inherit inputs outputs; };
           modules = [
             ./home/birnx/eldon.nix
-            hyprland.homeManagerModules.default
+            # hyprland.homeManagerModules.default
             # nvf.homeManagerModules.default
             # { wayland.windowManager.hyprland.enable = true; }
           ];
