@@ -24,10 +24,10 @@
     # nvf = {
     #   url = "github:birnx/nvf";
     # };
-    zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # zen-browser = {
+    #   url = "github:youwen5/zen-browser-flake";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
   };
   outputs =
