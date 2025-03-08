@@ -17,19 +17,18 @@
       url = "github:Duckonaut/split-monitor-workspaces";
       inputs.hyprland.follows = "hyprland";
     };
-    khanelivim = {
-      url = "github:birnx/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    # nvf = {
-    #   url = "github:birnx/nvf";
-    # };
-    # zen-browser = {
-    #   url = "github:youwen5/zen-browser-flake";
+    # khanelivim = {
+    #   url = "github:birnx/nixvim";
     #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
   };
+  # nvf = {
+  #   url = "github:birnx/nvf";
+  # };
+  # zen-browser = {
+  #   url = "github:youwen5/zen-browser-flake";
+  #   inputs.nixpkgs.follows = "nixpkgs";
+  # };
+  determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
   outputs =
     {
       self,
