@@ -21,32 +21,23 @@
     #   url = "github:birnx/nixvim";
     #   inputs.nixpkgs.follows = "nixpkgs";
   };
-  # nvf = {
-  #   url = "github:birnx/nvf";
-  # };
-  # zen-browser = {
-  #   url = "github:youwen5/zen-browser-flake";
-  #   inputs.nixpkgs.follows = "nixpkgs";
-  # };
+
   determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
+
   outputs =
     {
       self,
       home-manager,
       hyprland,
       nixpkgs,
-      determinate,
+      # determinate,
       # nvf,
       ...
     }@inputs:
     let
       inherit (self) outputs;
       systems = [
-        # "aarch64-linux"
-        # "i686-linux"
         "x86_64-linux"
-        # "aarch64-darwin"
-        # "x86_64-darwi"
       ];
       forAllSystems = nixpkgs.lib.genAttrs systems;
     in
@@ -60,7 +51,6 @@
             ./hosts/eldon
             hyprland.nixosModules.default
             determinate.nixosModules.default
-            # nvf.nixosModules.default
           ];
         };
       };
@@ -70,9 +60,6 @@
           extraSpecialArgs = { inherit inputs outputs; };
           modules = [
             ./home/birnx/eldon.nix
-            # hyprland.homeManagerModules.default
-            # nvf.homeManagerModules.default
-            # { wayland.windowManager.hyprland.enable = true; }
           ];
         };
       };
