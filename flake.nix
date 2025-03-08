@@ -20,9 +20,9 @@
     # khanelivim = {
     #   url = "github:birnx/nixvim";
     #   inputs.nixpkgs.follows = "nixpkgs";
-  };
 
-  determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
+  };
 
   outputs =
     {
@@ -30,7 +30,7 @@
       home-manager,
       hyprland,
       nixpkgs,
-      # determinate,
+      determinate,
       # nvf,
       ...
     }@inputs:
