@@ -23,6 +23,6 @@ jobs:
       - uses: "DeterminateSystems/flakehub-push@main"
         with:
           visibility: "private"
-          name: "birnxnet/cfg"
+          name: "birnxnet/nixcfg"
           tag: "${{ inputs.tag }}"
-          include-output-paths: false
+          include-output-paths: true
