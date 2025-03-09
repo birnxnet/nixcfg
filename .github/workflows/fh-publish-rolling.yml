@@ -14,7 +14,7 @@ jobs:
       - uses: "DeterminateSystems/nix-installer-action@main"
       - uses: "DeterminateSystems/flakehub-push@main"
         with:
-          name: "birnxnet/determinate"
+          name: "birnxnet/nixcfg"
           rolling: true
           visibility: "private"
           include-output-paths: true
