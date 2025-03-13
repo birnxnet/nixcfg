@@ -124,7 +124,7 @@
     pipewire = {
       enable = true;
       pulse.enable = true;
-      wireplumber.enable = true;
+      wireplumber.enable = false;
       alsa = {
         enable = true;
         support32Bit = true;
