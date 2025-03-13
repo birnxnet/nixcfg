@@ -4,7 +4,7 @@
     ../common
     ../features/cli
     ../features/desktop
-    # ../../pkgs/monolisa/monolisa.nix
+    ../../pkgs/monolisa/monolisa.nix
   ];
 
   features = {
