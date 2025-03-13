@@ -20,6 +20,7 @@
     # khanelivim = {
     #   url = "github:birnx/nixvim";
     #   inputs.nixpkgs.follows = "nixpkgs";
+
     nixos-fonts.url = "github:Takamatsu-Naoki/nixos-fonts";
 
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
@@ -28,6 +29,7 @@
   outputs =
     {
       self,
+      # nixos-fonts,
       home-manager,
       hyprland,
       nixpkgs,
