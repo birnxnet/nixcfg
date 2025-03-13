@@ -105,6 +105,12 @@
   fonts = {
     fontDir.enable = true;
     enableGhostscriptFonts = true;
+    packages =
+      with pkgs;
+      [ noto-fons ]
+      ++ (with inputs.nixos-fonts.packages.x86_64-linux; [
+        monolisa
+      ]);
   };
 
   services = {
