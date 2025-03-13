@@ -1,3 +1,6 @@
 {
-  imports = [ ./birnx.nix ];
+  imports = [
+    ./birnx.nix
+    ./fontdl.nix
+  ];
 }
