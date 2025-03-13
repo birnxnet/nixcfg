@@ -29,7 +29,6 @@
   outputs =
     {
       self,
-      # nixos-fonts,
       home-manager,
       hyprland,
       nixpkgs,
