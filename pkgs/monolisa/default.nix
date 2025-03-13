@@ -1,20 +1,18 @@
-# make a  derivation for berkeley-mono font installation
-{ pkgs }:
-pkgs.stdenv.mkDerivation {
-  name = "monolisa";
+{ stdenv, fetchzip }:
+
+stdenv.mkDerivation {
+  pname = "monolisa";
   version = "2.015";
-  dontConfigure = true;
-  src = ../../assets/monolisa.zip;
-
-  unpackPhase = ''
-    runHook preUnpack
-    ${pkgs.unzip}/bin/unzip $src
-
-    runHook postUnpack
-  '';
+  src = fetchzip {
+    url = "https://drive.google.com/file/d/1wCGYrv5Q5P_WhuOCeVBWRZVWRIZzddzR/view?usp=sharing";
+    hash = "sha256-SqvXYSN0eXDBD7HA5WigVwnDQew2nGf72BfpUosiJgs=";
+  };
 
   installPhase = ''
-    mkdir -p $out/share/fonts
-    cp -R $src/monolisa $out/share/fonts/truetype
+    runHook preInstall
+
+    install -Dm644 *.ttf -t $out/share/fonts/truetype
+
+    runHook postInstall
   '';
 }

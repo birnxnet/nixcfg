@@ -5,6 +5,7 @@
     ../features/cli
     ../features/desktop
     # ../../pkgs/monolisa/monolisa.nix
+    ../features/desktop/fontdl.nix
   ];
 
   features = {
