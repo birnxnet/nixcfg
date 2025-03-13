@@ -74,6 +74,7 @@
   programs = {
     _1password-gui = {
       enable = true;
+      package = pkgs._1password-gui-beta;
       polkitPolicyOwners = [ "birnx" ];
     };
     _1password = {
