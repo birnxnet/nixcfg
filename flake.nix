@@ -17,9 +17,10 @@
       url = "github:Duckonaut/split-monitor-workspaces";
       inputs.hyprland.follows = "hyprland";
     };
-    # khanelivim = {
-    #   url = "github:birnx/nixvim";
-    #   inputs.nixpkgs.follows = "nixpkgs";
+    khanelivim = {
+      url = "github:birnx/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nixos-fonts.url = "github:Takamatsu-Naoki/nixos-fonts";
 
