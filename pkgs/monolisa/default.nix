@@ -1,10 +1,10 @@
 # make a  derivation for berkeley-mono font installation
 { pkgs }:
 pkgs.stdenv.mkDerivation {
-  pname = "monolisa";
+  name = "monolisa";
   version = "2.015";
   dontConfigure = true;
-  src = ./monolisa.zip;
+  src = ../../assets/monolisa.zip;
 
   unpackPhase = ''
     runHook preUnpack

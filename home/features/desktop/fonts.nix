@@ -20,6 +20,7 @@ in
     };
 
     home.packages = with pkgs; [
+      monolisa
       cantarell-fonts
       hack-font
       inter
