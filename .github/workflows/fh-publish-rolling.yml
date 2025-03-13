@@ -1,0 +1,20 @@
+name: "Publish every Git push to master to FlakeHub"
+on:
+  push:
+    branches:
+      - "master"
+jobs:
+  flakehub-publish:
+    runs-on: "ubuntu-64"
+    permissions:
+      id-token: "write"
+      contents: "read"
+    steps:
+      - uses: "actions/checkout@v4"
+      - uses: "DeterminateSystems/nix-installer-action@main"
+      - uses: "DeterminateSystems/flakehub-push@main"
+        with:
+          name: "birnxnet/nixcfg"
+          rolling: true
+          visibility: "private"
+          include-output-paths: true

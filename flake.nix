@@ -17,19 +17,13 @@
       url = "github:Duckonaut/split-monitor-workspaces";
       inputs.hyprland.follows = "hyprland";
     };
-    khanelivim = {
-      url = "github:birnx/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    # nvf = {
-    #   url = "github:birnx/nvf";
-    # };
-    zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # khanelivim = {
+    #   url = "github:birnx/nixvim";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
   };
+
   outputs =
     {
       self,
@@ -57,7 +51,6 @@
             ./hosts/eldon
             hyprland.nixosModules.default
             determinate.nixosModules.default
-            # nvf.nixosModules.default
           ];
         };
       };
@@ -67,9 +60,6 @@
           extraSpecialArgs = { inherit inputs outputs; };
           modules = [
             ./home/birnx/eldon.nix
-            hyprland.homeManagerModules.default
-            # nvf.homeManagerModules.default
-            { wayland.windowManager.hyprland.enable = true; }
           ];
         };
       };

@@ -26,8 +26,8 @@
     rofi-wayland
     todoist
     todoist-electron
-    # inputs.timr.packages.${pkgs.stdenv.hostPlatform.system}.timr
-    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.zen-browser
+    # # inputs.timr.packages.${pkgs.stdenv.hostPlatform.system}.timr
+    # inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.zen-browser
     yt-dlp
     ffmpeg-full
     spotify

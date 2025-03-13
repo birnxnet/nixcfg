@@ -1,6 +1,6 @@
 {
   pkgs,
-  inputs,
+  # inputs,
   ...
 }:
 {
@@ -62,7 +62,7 @@
     pulsemixer
     pwvucontrol
     loupe
-    inputs.khanelivim.packages.${pkgs.system}.default
+    # inputs.khanelivim.packages.${pkgs.system}.default
     zellij
     fd
     btop
