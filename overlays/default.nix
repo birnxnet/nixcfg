@@ -8,10 +8,10 @@
   # https://nixos.wiki/wiki/Overlays
   modifications = final: prev: {
     wavebox = prev.wavebox.overrideAttrs (oldAttrs: rec {
-      version = "10.134.6-3";
+      version = "10.134.11-2";
       src = prev.fetchurl {
-        url = "https://download.wavebox.app/beta/linux/deb/amd64/wavebox_10.134.6-3_amd64.deb";
-        hash = "sha256-PexmDJCtA0BZrv+etH8wpj8Y3gBIww+bBPOt6xTLuGA=";
+        url = "https://download.wavebox.app/stable/linux/deb/amd64/wavebox_10.134.11-2_amd64.deb";
+        hash = "sha256-iRng62NhF9b7RvM8SkuVDvlQarWJk7/WvbMVuV/u42I=";
       };
     });
 
