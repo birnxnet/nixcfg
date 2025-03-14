@@ -10,8 +10,8 @@
     wavebox = prev.wavebox.overrideAttrs (oldAttrs: rec {
       version = "10.134.11-2";
       src = prev.fetchurl {
-        url = "https://download.wavebox.app/stable/linux/deb/amd64/wavebox_10.134.11-2_amd64.deb";
-        hash = "sha256-iRng62NhF9b7RvM8SkuVDvlQarWJk7/WvbMVuV/u42I=";
+        url = " https://download.wavebox.app/stable/linux/deb/amd64/wavebox_10.134.15-2_amd64.deb";
+        hash = "sha256-lWwePNEobz+bx6JqLG6CVGmtQsUos+WlkBgIhpfl3LI=";
       };
     });
 

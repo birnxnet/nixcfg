@@ -10,8 +10,8 @@ fetchurl {
   sha256 = "sha256-jUAF7hSr2DSF3qcsmmu2LrkHntEo6gf3KEvNzlyQu7M=";
 
   postFetch = ''
-    tar xf $downloadedFile --strip=1
-    install -o -t $out/share/fonts/truetype -D monolisa/*.ttf
+      tar xf $downloadedFile --strip=1
+    install -D -t "$out/share/fonts/truetype" monolisa/*.ttf
   '';
 
   meta = with lib; {
