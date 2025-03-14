@@ -712,24 +712,6 @@
         "type": "github"
       }
     },
-    "nix-fonts": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_4"
-      },
-      "locked": {
-        "lastModified": 1741964620,
-        "narHash": "sha256-t+PtqD4Yflt7xyz8wceOlTnHS/elD8KmDftiH1FdrPk=",
-        "owner": "birnxnet",
-        "repo": "nix-fonts",
-        "rev": "9dc14de35aabfaa519423379da1e8be821e1b07a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "birnxnet",
-        "repo": "nix-fonts",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1734359947,
@@ -843,22 +825,6 @@
       "locked": {
         "lastModified": 1741851582,
         "narHash": "sha256-cPfs8qMccim2RBgtKGF+x9IBCduRvd/N5F4nYpU0TVE=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "6607cf789e541e7873d40d3a8f7815ea92204f32",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_5": {
-      "locked": {
-        "lastModified": 1741851582,
-        "narHash": "sha256-cPfs8qMccim2RBgtKGF+x9IBCduRvd/N5F4nYpU0TVE=",
         "owner": "nixos",
         "repo": "nixpkgs",
         "rev": "6607cf789e541e7873d40d3a8f7815ea92204f32",
@@ -944,8 +910,7 @@
         "hyprland": "hyprland",
         "hyprland-plugins": "hyprland-plugins",
         "khanelivim": "khanelivim",
-        "nix-fonts": "nix-fonts",
-        "nixpkgs": "nixpkgs_5",
+        "nixpkgs": "nixpkgs_4",
         "nixpkgs-stable": "nixpkgs-stable",
         "split-monitor-workspaces": "split-monitor-workspaces"
       }
