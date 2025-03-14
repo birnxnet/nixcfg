@@ -268,7 +268,7 @@ in
     };
 
     home.packages = with pkgs; [
-      kdePackages.qt6ct
+      kdePackages.qtwayland
       catppuccin-kvantum
       nwg-look
       vesktop
@@ -278,7 +278,7 @@ in
       overskride
       grim
       hyprlock
-      qt6.qtwayland
+      # qt6.qtwayland
       slurp
       waypipe
       wf-recorder
