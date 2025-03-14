@@ -6,7 +6,7 @@ in
 fetchzip {
   name = "monolisa-${version}";
 
-  url = "https://fourdaycreep.com/s/EgcpdBSXQqTjX7B/download/fonts.zip";
+  url = " https://fourdaycreep.com/s/rBnnEYSWCAeeE6f/download/monolisa.zip";
 
   postFetch = ''
     mkdir -p $out/share/fonts/truetype
