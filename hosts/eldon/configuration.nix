@@ -105,14 +105,6 @@
   fonts = {
     fontDir.enable = true;
     enableGhostscriptFonts = true;
-    packages =
-      with pkgs;
-      [
-        nerd-fonts.heavy-data
-      ]
-      ++ (with inputs.nix-fonts.packages.x86_64-linux; [
-        monolisa
-      ]);
   };
 
   services = {

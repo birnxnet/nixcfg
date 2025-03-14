@@ -22,7 +22,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-fonts.url = "github:birnxnet/nix-fonts";
+    # nix-fonts.url = "github:birnxnet/nix-fonts";
 
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
   };

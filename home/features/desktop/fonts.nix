@@ -7,6 +7,7 @@
 with lib;
 let
   cfg = config.features.desktop.fonts;
+  monolisa = pkgs.callPackage ../../../pkgs/monolisa { };
 in
 {
   options.features.desktop.fonts.enable = mkEnableOption "install additional fonts for desktop apps";
@@ -20,7 +21,7 @@ in
     };
 
     home.packages = with pkgs; [
-      # monolisa
+      monolisa
       cantarell-fonts
       hack-font
       inter
