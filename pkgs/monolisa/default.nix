@@ -11,7 +11,7 @@ fetchurl {
 
   postFetch = ''
       tar xf $downloadedFile
-    install -D -t $out/share/fonts/truetype *.ttf
+    install -D -t *.ttf $out/share/fonts/truetype 
   '';
 
   meta = with lib; {
