@@ -9,8 +9,8 @@ fetchzip {
   url = " https://fourdaycreep.com/s/rBnnEYSWCAeeE6f/download/monolisa.zip";
 
   postFetch = ''
-    mkdir -p $out/share/fonts/truetype
-    unzip -j $downloadedFile \*.ttf -d $out/share/fonts/truetype
+    unzip -j $downloadedFile --strip=1
+    install -m444 -Dt $out/share/fonts/truetype fonts/ttf/*.ttf
   '';
 
   sha256 = "sha256-d9oXhgaRwlxuPvLzp0o74ChKs9jWUhkn8mY1nNmetOU=";
