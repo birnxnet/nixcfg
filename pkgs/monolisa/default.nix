@@ -6,14 +6,14 @@ in
 fetchzip {
   name = "monolisa-${version}";
 
-  url = "https://fourdaycreep.com/s/rBnnEYSWCAeeE6f/download/monolisa.zip";
+  url = "https://fourdaycreep.com/s/EgcpdBSXQqTjX7B/download/fonts.zip";
 
   postFetch = ''
     mkdir -p $out/share/fonts/truetype
     unzip -j $downloadedFile \*.ttf -d $out/share/fonts/truetype
   '';
 
-  sha256 = "sha256-Vz78eXMRlft9ZZHD0L0Qh6u2GB7c4E6uy+Dh77uFKG0=";
+  sha256 = "sha256-d9oXhgaRwlxuPvLzp0o74ChKs9jWUhkn8mY1nNmetOU=";
 
   meta = with lib; {
     homepage = "https://monolisa.dev";
