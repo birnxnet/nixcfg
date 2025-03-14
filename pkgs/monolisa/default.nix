@@ -11,7 +11,7 @@ fetchurl {
 
   postFetch = ''
       tar xf $downloadedFile
-    install -D -t $out/share/fonts/ monolisa/*.ttf
+    install -D -t $out/share/fonts/ ttf/*.ttf
   '';
 
   meta = with lib; {
