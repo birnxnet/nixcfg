@@ -39,6 +39,12 @@
     mullvad-vpn
     timer
     llm
+
+    fh
+    zathura
+    gh
+    libqalculate
+
   ];
 
   home.file = {
