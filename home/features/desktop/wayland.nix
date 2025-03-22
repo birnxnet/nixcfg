@@ -268,9 +268,6 @@ in
     };
 
     home.packages = with pkgs; [
-      kdePackages.qtwayland
-      kdePackages.qtstyleplugin-kvantum
-      catppuccin-kvantum
       nwg-look
       vesktop
       discordo
@@ -289,6 +286,23 @@ in
       wtype
       ydotool
       television
+
+      gtk-engine-murrine
+      jq
+      kitty
+      polkit_gnome
+      libsForQt5.qt5ct
+      libsForQt5.qtstyleplugin-kvantum
+      kdePackages.qt6ct
+      kdePackages.qtwayland
+      kdePackages.qtstyleplugin-kvantum
+      catppuccin-kvantum
+      playerctl
+      gsettings-qt
+      libappindicator
+      libnotify
+      xdg-user-dirs
+      xdg-utils
     ];
   };
 }

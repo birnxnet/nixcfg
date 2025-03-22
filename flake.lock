@@ -662,11 +662,11 @@
         "yazi": "yazi"
       },
       "locked": {
-        "lastModified": 1742638492,
-        "narHash": "sha256-PInPHT6FK9Q58U66Vm8uIEjWg8DgGg1ac6h93bwxSYg=",
+        "lastModified": 1742639964,
+        "narHash": "sha256-DtAsOnoJytmlhqpWW2sdYX6Wk8prsS7E6Kz327ZRLeY=",
         "owner": "birnxnet",
         "repo": "nixvim",
-        "rev": "62fdb3971dfa9bac2a6678227394ed9abe0521ae",
+        "rev": "bad6dcc51be26e37480654f1327d15a5ac151ea7",
         "type": "github"
       },
       "original": {

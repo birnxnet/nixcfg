@@ -40,14 +40,14 @@
   hardware = {
     bluetooth = {
       enable = true;
-      # powerOnBoot = true;
+      powerOnBoot = true;
       package = pkgs.bluez5-experimental;
       settings = {
         General = {
           Enable = "Source,Sink,Media,Socket";
-          ControllerMode = "dual";
-          FastConnectable = true;
-          JustWorksRepairing = "always";
+          # ControllerMode = "dual";
+          # FastConnectable = true;
+          # JustWorksRepairing = "always";
           # Privacy = "device";
           Experimental = true;
         };
@@ -196,6 +196,10 @@
 
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
+    ];
+    configPackages = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal
     ];
   };
 
