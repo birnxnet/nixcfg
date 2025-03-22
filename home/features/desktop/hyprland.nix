@@ -39,6 +39,7 @@ in
         ];
         exec-once = [
           "waybar"
+          "determinate-nixd init --keep-mounted"
         ];
         monitor = [
           "DP-3,5120x1440@239.7,2160x2400,1"

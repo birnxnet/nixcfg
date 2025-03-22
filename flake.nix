@@ -18,7 +18,7 @@
       inputs.hyprland.follows = "hyprland";
     };
     khanelivim = {
-      url = "github:birnxnet/nixvim2";
+      url = "github:birnxnet/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

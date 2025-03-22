@@ -35,10 +35,10 @@
       #   "birnx"
       # ];
     };
-    gc = {
-      automatic = true;
-      options = "--delete-older-than 30d";
-    };
+    # gc = {
+    #   automatic = true;
+    #   options = "--delete-older-than 30d";
+    # };
     optimise.automatic = true;
     registry = (lib.mapAttrs (_: flake: { inherit flake; })) (
       (lib.filterAttrs (_: lib.isType "flake")) inputs
