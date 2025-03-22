@@ -269,6 +269,7 @@ in
 
     home.packages = with pkgs; [
       kdePackages.qtwayland
+      kdePackages.qtstyleplugin-kvantum
       catppuccin-kvantum
       nwg-look
       vesktop
@@ -278,8 +279,8 @@ in
       overskride
       grim
       hyprlock
-      # qt6.qtwayland
       slurp
+      ngrrram
       waypipe
       wf-recorder
       wl-mirror

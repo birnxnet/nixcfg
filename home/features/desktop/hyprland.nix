@@ -52,9 +52,9 @@ in
         };
 
         general = {
-          gaps_in = 6;
-          gaps_out = 8;
-          border_size = 5;
+          gaps_in = 4;
+          gaps_out = 6;
+          border_size = 3;
           layout = "dwindle";
           resize_on_border = true;
           snap = {
@@ -90,6 +90,9 @@ in
         windowrulev2 = [
           "opacity 0.9 0.7, class:^(Brave)$"
           "opacity 0.9 0.7, class:^(thunar)$"
+          "float, pwvucontrol"
+          "float, Overskride"
+          "float, nwg-look|qt6ct|mpv"
         ];
 
         animations = {

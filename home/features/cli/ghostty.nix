@@ -19,9 +19,9 @@ in
       installVimSyntax = true;
       settings = {
         theme = "catppuccin-mocha";
-        font-size = 20;
-        font-family = "Berkeley Mono Regular";
-        font-family-bold = "Berkeley Mono Bold";
+        font-size = 21;
+        font-family = "Berkeley Mono";
+        font-family-bold = "Berkeley Mono";
         font-family-italic = "Berkeley Mono Oblique";
         font-family-bold-italic = "Berkeley Mono Bold Oblique";
         cursor-style = "block";
@@ -29,8 +29,8 @@ in
         cursor-style-blink = true;
         mouse-hide-while-typing = true;
         # initial-command = "-e zellij";
-        window-padding-x = 6;
-        window-padding-y = 2;
+        window-padding-x = 4;
+        window-padding-y = 3;
         window-decoration = false;
         window-inherit-font-size = true;
         shell-integration = "fish";
