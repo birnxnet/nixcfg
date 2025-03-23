@@ -2,7 +2,8 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   imports = [
     ./fish.nix
     ./ghostty.nix
@@ -10,6 +11,10 @@
   ];
 
   programs = {
+    nvf = {
+      enable = true;
+    };
+
     zoxide = {
       enable = true;
       enableFishIntegration = true;
@@ -51,8 +56,8 @@
 
     mpv = {
       enable = true;
-      defaultProfiles = ["gpu-hq"];
-      scripts = [pkgs.mpvScripts.mpris];
+      defaultProfiles = [ "gpu-hq" ];
+      scripts = [ pkgs.mpvScripts.mpris ];
     };
   };
 
