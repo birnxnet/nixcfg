@@ -1,6 +1,6 @@
 {
   pkgs,
-  inputs,
+  # inputs,
   ...
 }:
 {
@@ -10,49 +10,53 @@
     ./fzf.nix
   ];
 
-  zoxide = {
-    enable = true;
-    enableFishIntegration = true;
-    options = [
-      "--cmd cd"
-      "--hook prompt"
-    ];
-  };
+  programs = {
+    nvf.enable = true;
 
-  eza = {
-    enable = true;
-    enableFishIntegration = true;
-    enableBashIntegration = true;
-    extraOptions = [
-      "-l"
-      "--icons"
-      "--git"
-      "-a"
-    ];
-  };
+    zoxide = {
+      enable = true;
+      enableFishIntegration = true;
+      options = [
+        "--cmd cd"
+        "--hook prompt"
+      ];
+    };
 
-  bat = {
-    enable = true;
-  };
+    eza = {
+      enable = true;
+      enableFishIntegration = true;
+      enableBashIntegration = true;
+      extraOptions = [
+        "-l"
+        "--icons"
+        "--git"
+        "-a"
+      ];
+    };
 
-  yazi = {
-    enable = true;
-  };
+    bat = {
+      enable = true;
+    };
 
-  lazygit = {
-    enable = true;
-  };
+    yazi = {
+      enable = true;
+    };
 
-  direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-    # enableFishIntegration = true;
-  };
+    lazygit = {
+      enable = true;
+    };
 
-  mpv = {
-    enable = true;
-    defaultProfiles = [ "gpu-hq" ];
-    scripts = [ pkgs.mpvScripts.mpris ];
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+      # enableFishIntegration = true;
+    };
+
+    mpv = {
+      enable = true;
+      defaultProfiles = [ "gpu-hq" ];
+      scripts = [ pkgs.mpvScripts.mpris ];
+    };
   };
 
   home.packages = with pkgs; [
