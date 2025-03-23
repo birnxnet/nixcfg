@@ -52,6 +52,7 @@
           specialArgs = { inherit inputs outputs; };
           modules = [
             ./hosts/eldon
+            nvf.nixosModules.default
             hyprland.nixosModules.default
             determinate.nixosModules.default
           ];
@@ -63,6 +64,7 @@
           extraSpecialArgs = { inherit inputs outputs; };
           modules = [
             ./home/birnx/eldon.nix
+            nvf.homeManagerModules.default
           ];
         };
       };
