@@ -1,14 +1,17 @@
 name: update-flake-lock
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - master
 jobs:
   lockfile:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      id-token: write
     steps:
       - uses: actions/checkout@v4
       - uses: DeterminateSystems/nix-installer-action@main
       - uses: DeterminateSystems/flakehub-cache-action@main
       - uses: DeterminateSystems/update-flake-lock@main
+    permissions:
+      contents: read
+      id-token: write
