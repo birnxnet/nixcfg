@@ -14,8 +14,6 @@ jobs:
         uses: DeterminateSystems/flake-checker-action@main
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@main
-      - name: Build default package
-        run: nix build
         with:
           runner-map: |
             {
