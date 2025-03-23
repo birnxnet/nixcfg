@@ -10,12 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Check Nix flake inputs
-        uses: DeterminateSystems/flake-checker-action@main
-      - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@main
         with:
           flake-lock-path: ./flake.lock
           check-owner: false
           ignore-missing-flake-lock: false
           fail-mode: true
+      - name: Check Nix flake inputs
+        uses: DeterminateSystems/flake-checker-action@main
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+      - name: Build default package
+        run: nix build
