@@ -796,16 +796,16 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1742704084,
-        "narHash": "sha256-riWSVXECq+i5UMTg1ZhrjgQ5OXayHhN9ISBrkoAiIhQ=",
-        "rev": "fe906866a19eab4eb53fb347dd18cbb2e1a65893",
-        "revCount": 1928,
+        "lastModified": 1742718357,
+        "narHash": "sha256-wpytiFCcEPCNBW96hXoqVJtYvGarYPdYylBiKOG8VJg=",
+        "rev": "d5d70350bb6017e580e95b4b4741b34c886e62ba",
+        "revCount": 1929,
         "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/birnxnet/nvf/0.1.1928%2Brev-fe906866a19eab4eb53fb347dd18cbb2e1a65893/0195c114-9a08-7c48-8348-8d8c6e9996d8/source.tar.gz"
+        "url": "https://api.flakehub.com/f/pinned/birnxnet/nvf/0.1.1929%2Brev-d5d70350bb6017e580e95b4b4741b34c886e62ba/0195c1eb-d520-74d2-b61c-a66964069b59/source.tar.gz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://flakehub.com/f/birnxnet/nvf/0.1.1928.tar.gz"
+        "url": "https://flakehub.com/f/birnxnet/nvf/0.1.1929"
       }
     },
     "pre-commit-hooks": {
