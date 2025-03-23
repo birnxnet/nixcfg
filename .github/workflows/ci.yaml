@@ -1,0 +1,135 @@
+name: Flake checker CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  checks:
+    name: Nix and Rust checks
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/flakehub-cache-action@main
+      - name: Check flake.lock
+        uses: DeterminateSystems/flake-checker-action@main
+        with:
+          fail-mode: true
+      - name: Check Nix formatting
+        run: nix develop -c check-nixpkgs-fmt
+      - name: Check Rust formatting
+        run: nix develop -c check-rustfmt
+      - name: Clippy
+        run: nix develop -c cargo clippy
+
+  rust-tests:
+    name: Test Rust
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/flakehub-cache-action@main
+      - name: cargo test
+        run: nix develop -c cargo test
+
+  check-flake-cel-condition:
+    name: Check flake.lock test (CEL condition)
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/flakehub-cache-action@main
+      - name: Check flake.lock
+        run: |
+          nix develop -c \
+            cargo run -- \
+              --condition "supportedRefs.contains(gitRef) && numDaysOld > 30 && owner == 'NixOS'" \
+              ./tests/flake.cel.0.lock
+
+  check-flake-dirty:
+    name: Check flake.lock test (dirty 😈)
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/flakehub-cache-action@main
+      - name: Check flake.lock
+        run: |
+          nix develop -c cargo run -- ./tests/flake.dirty.0.lock
+
+  check-flake-clean:
+    name: Check flake.lock test (clean 👼)
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/flakehub-cache-action@main
+      - name: Check flake.lock
+        run: |
+          nix develop -c cargo run
+
+  check-flake-dirty-fail-mode:
+    name: Check flake.lock test (dirty 😈 plus fail mode activated)
+    runs-on: ubuntu-22.04
+    if: false
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/flakehub-cache-action@main
+      - name: Check flake.lock
+        run: |
+          nix develop -c cargo run -- --fail-mode ./tests/flake.dirty.0.lock
+
+  build-artifacts:
+    name: Build artifacts
+    needs: checks
+    uses: ./.github/workflows/build.yaml
+    secrets: inherit
+
+  action-integration-test:
+    name: Integration test for flake-checker-action
+    needs: build-artifacts
+    runs-on: ${{ matrix.systems.runner }}
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      ARTIFACT_KEY: flake-checker-${{ matrix.systems.system }}
+    strategy:
+      matrix:
+        systems:
+          - system: X64-Linux
+            runner: ubuntu-22.04
+          - system: ARM64-Linux
+            runner: namespace-profile-default-arm64
+          - system: X64-macOS
+            runner: macos-13
+          - system: ARM64-macOS
+            runner: macos-latest-xlarge
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download flake-checker for ${{ matrix.systems.system }}
+        uses: actions/download-artifact@v4.1.7
+        with:
+          name: ${{ env.ARTIFACT_KEY }}
+          path: ${{ env.ARTIFACT_KEY }}
+
+      - name: chmod flake-checker executable on ${{ matrix.systems.system }}
+        run: |
+          chmod +x "${{ env.ARTIFACT_KEY }}/flake-checker"
+
+          file "${{ env.ARTIFACT_KEY }}/flake-checker"
+
+      - name: Test flake-checker-action@main on ${{ matrix.systems.runner }}
+        uses: DeterminateSystems/flake-checker-action@main
+        with:
+          source-binary: ${{ env.ARTIFACT_KEY }}/flake-checker
