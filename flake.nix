@@ -23,7 +23,7 @@
     # };
 
     # nix-fonts.url = "github:birnxnet/nix-fonts";
-    nvf.url = "https://flakehub.com/f/birnxnet/nvf/0.1.1925.gz";
+    nvf.url = "https://flakehub.com/f/birnxnet/nvf/*";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
   };
 
