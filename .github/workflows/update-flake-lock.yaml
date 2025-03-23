@@ -1,17 +1,25 @@
-name: update-flake-lock
 on:
-  workflow_dispatch:
+  pull_request:
   push:
-    branches:
-      - master
+    branches: [main]
 jobs:
-  lockfile:
+  build:
+    name: Build Nix targets
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: DeterminateSystems/nix-installer-action@main
-      - uses: DeterminateSystems/flakehub-cache-action@main
-      - uses: DeterminateSystems/update-flake-lock@main
-    permissions:
-      contents: read
-      id-token: write
+      - name: Check Nix flake inputs
+        uses: DeterminateSystems/flake-checker-action@main
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+      - name: Build default package
+        run: nix build
+        with:
+          runner-map: |
+            {
+              "x86_64-linux": "buntu1"
+            }
+          flake-lock-path: ./flake.lock
+          check-owner: false
+          ignore-missing-flake-lock: false
+          fail-mode: true
