@@ -62,7 +62,8 @@
     pulsemixer
     # pwvucontrol
     loupe
-    inputs.khanelivim.packages.${pkgs.system}.default
+    # inputs. khanelivim.packages.${pkgs.system}.default
+    inputs.nvf.packages.${pkgs.stdenv.hostPlatform.system}.nvf
     zellij
     fd
     btop

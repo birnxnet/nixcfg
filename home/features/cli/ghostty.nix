@@ -19,7 +19,7 @@ in
       installVimSyntax = true;
       settings = {
         theme = "catppuccin-mocha";
-        font-size = 21;
+        font-size = 22;
         font-family = "Berkeley Mono";
         font-family-bold = "Berkeley Mono";
         font-family-italic = "Berkeley Mono Oblique";

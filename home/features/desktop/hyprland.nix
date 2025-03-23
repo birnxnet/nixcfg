@@ -28,7 +28,7 @@ in
       };
 
       settings = {
-        env = [
+        envd = [
           "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
           "QT_QPA_PLATFORMTHEME,qt6ct"
           "GDK_BACKEND,wayland,x11,*"
@@ -67,12 +67,17 @@ in
         };
 
         misc = {
+          enable_swallow = true;
+          swallow_regex = "class:^(foot)$";
           initial_workspace_tracking = 1;
           mouse_move_enables_dpms = false;
           key_press_enables_dpms = true;
         };
 
-        binds.workspace_back_and_forth = true;
+        binds = {
+          workspace_back_and_forth = true;
+          movefocus_cycles_fullscreen = true;
+        };
 
         input = {
           kb_layout = "us";
@@ -109,8 +114,8 @@ in
           rounding = 8;
           blur = {
             enabled = true;
-            size = 5;
-            passes = 3;
+            size = 8;
+            passes = 6;
             new_optimizations = "on";
             ignore_opacity = "on";
           };
@@ -138,7 +143,7 @@ in
         bind = [
           "$modifier ,Return,exec,ghostty"
           "$modifier SHIFT,Return,exec,rofi -show drun"
-          # "$modifier SHIFT,W,exec,brave --app=https://kagi.com"
+          "$modifier SHIFT,W,exec,wavebox --app="
           "$modifier ,W,exec,wavebox"
           "$modifier ,T,exec,thunar"
           "$modifier ,C,Killactive"

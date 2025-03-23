@@ -17,13 +17,13 @@
       url = "github:Duckonaut/split-monitor-workspaces";
       inputs.hyprland.follows = "hyprland";
     };
-    khanelivim = {
-      url = "github:birnxnet/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # khanelivim = {
+    #   url = "github:birnxnet/nixvim";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # nix-fonts.url = "github:birnxnet/nix-fonts";
-
+    nvf.url = "https://flakehub.com/f/birnxnet/nvf/0.1.1928";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
   };
 
@@ -34,7 +34,7 @@
       hyprland,
       nixpkgs,
       determinate,
-      # nvf,
+      nvf,
       ...
     }@inputs:
     let
