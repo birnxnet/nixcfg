@@ -4,11 +4,9 @@
   pkgs,
   ...
 }:
-with lib;
-let
+with lib; let
   cfg = config.features.desktop.wayland;
-in
-{
+in {
   options.features.desktop.wayland.enable = mkEnableOption "wayland config and tools";
 
   config = mkIf cfg.enable {
@@ -198,7 +196,7 @@ in
             "clock"
             "custom/weather"
           ];
-          modules-center = [ "hyprland/workspaces" ];
+          modules-center = ["hyprland/workspaces"];
           modules-right = [
             "tray"
           ];

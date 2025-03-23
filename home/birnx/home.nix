@@ -4,8 +4,7 @@
   lib,
   pkgs,
   ...
-}:
-{
+}: {
   home.username = lib.mkDefault "birnx";
   home.homeDirectory = lib.mkDefault "/home/${config.home.username}";
 
@@ -44,7 +43,6 @@
     zathura
     gh
     libqalculate
-
   ];
 
   home.file = {

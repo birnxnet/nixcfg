@@ -1,19 +1,18 @@
 {
-config,
-lib,
-...
+  config,
+  lib,
+  ...
 }:
-
 with lib; let
   cfg = config.features.cli.fzf;
-in{
+in {
   options.features.cli.fzf.enable = mkEnableOption "enable fzf";
 
   config = mkIf cfg.enable {
     programs.fzf = {
       enable = true;
       enableFishIntegration = true;
-      defaultOptions = [ 
+      defaultOptions = [
         "--preview='bat --color=always -n {}'"
         "--bind 'ctrl-/:toggle-preview'"
       ];
@@ -36,4 +35,4 @@ in{
       };
     };
   };
-  }
+}

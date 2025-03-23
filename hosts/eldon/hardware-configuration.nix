@@ -3,10 +3,8 @@
   lib,
   modulesPath,
   ...
-}:
-
-{
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+}: {
+  imports = [(modulesPath + "/installer/scan/not-detected.nix")];
 
   boot.initrd.availableKernelModules = [
     "nvme"
@@ -16,9 +14,9 @@
     "usb_storage"
     "sd_mod"
   ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
-  boot.extraModulePackages = [ ];
+  boot.initrd.kernelModules = [];
+  boot.kernelModules = [];
+  boot.extraModulePackages = [];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/c1d45123-6371-4dd0-a52c-76917907f327";
@@ -34,7 +32,7 @@
     ];
   };
 
-  swapDevices = [ ];
+  swapDevices = [];
 
   networking.useDHCP = lib.mkDefault true;
   networking.interfaces.enp7s0.useDHCP = lib.mkDefault true;

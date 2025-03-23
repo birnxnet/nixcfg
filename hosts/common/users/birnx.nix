@@ -1,13 +1,13 @@
 {
-config,
-pkgs,
-inputs,
-...
+  config,
+  pkgs,
+  inputs,
+  ...
 }: {
   users.users.birnx = {
     isNormalUser = true;
     description = "birnx";
-    extraGroups = [ 
+    extraGroups = [
       "networkmanager"
       "wheel"
       "audio"
@@ -15,11 +15,9 @@ inputs,
       "plugdev"
       "input"
     ];
-    packages = [ inputs.home-manager.packages.${pkgs.system}.default ];
+    packages = [inputs.home-manager.packages.${pkgs.system}.default];
     shell = pkgs.fish;
   };
-    home-manager.users.birnx =
-      import ../../../home/birnx/${config.networking.hostName}.nix;
+  home-manager.users.birnx =
+    import ../../../home/birnx/${config.networking.hostName}.nix;
 }
-
-

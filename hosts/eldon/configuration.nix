@@ -2,10 +2,8 @@
   inputs,
   pkgs,
   ...
-}:
-
-{
-  imports = [ ./hardware-configuration.nix ];
+}: {
+  imports = [./hardware-configuration.nix];
 
   boot = {
     loader.timeout = 1;
@@ -75,7 +73,7 @@
     _1password-gui = {
       enable = true;
       package = pkgs._1password-gui-beta;
-      polkitPolicyOwners = [ "birnx" ];
+      polkitPolicyOwners = ["birnx"];
     };
     _1password = {
       enable = true;
@@ -187,7 +185,7 @@
     enable = true;
     xdgOpenUsePortal = true;
     config = {
-      common.default = [ "gtk" ];
+      common.default = ["gtk"];
       hyprland.default = [
         "gtk"
         "hyprland"
@@ -240,7 +238,6 @@
       extraPackages32 = with pkgs.pkgsi686Linux; [
         libvdpau-va-gl
       ];
-
     };
     amdgpu = {
       initrd.enable = true;

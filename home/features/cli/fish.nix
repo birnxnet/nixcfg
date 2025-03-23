@@ -3,12 +3,9 @@
   lib,
   ...
 }:
-
-with lib;
-let
+with lib; let
   cfg = config.features.cli.fish;
-in
-{
+in {
   options.features.cli.fish.enable = mkEnableOption "enable extended fish config";
 
   config = mkIf cfg.enable {
@@ -17,11 +14,11 @@ in
       loginShellInit = ''
         set -x NIX_PATH nixpkgs=channel:nixos-unstable
         set -x NIX_LOG info
-        set -x TERMINAL ghostty 
+        set -x TERMINAL ghostty
 
         if test (tty) = "/dev/tty1"
           exec Hyprland &> /dev/null
-        end  
+        end
       '';
       shellInit = ''
         set -U fish_greeting ""

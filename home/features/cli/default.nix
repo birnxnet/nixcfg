@@ -2,8 +2,7 @@
   pkgs,
   inputs,
   ...
-}:
-{
+}: {
   imports = [
     ./fish.nix
     ./ghostty.nix
@@ -52,8 +51,8 @@
 
     mpv = {
       enable = true;
-      defaultProfiles = [ "gpu-hq" ];
-      scripts = [ pkgs.mpvScripts.mpris ];
+      defaultProfiles = ["gpu-hq"];
+      scripts = [pkgs.mpvScripts.mpris];
     };
   };
 

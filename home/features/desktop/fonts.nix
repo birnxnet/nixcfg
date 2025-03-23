@@ -4,16 +4,13 @@
   pkgs,
   ...
 }:
-with lib;
-let
+with lib; let
   cfg = config.features.desktop.fonts;
   # monolisa = pkgs.callPackage ../../../pkgs/monolisa { };
-in
-{
+in {
   options.features.desktop.fonts.enable = mkEnableOption "install additional fonts for desktop apps";
 
   config = mkIf cfg.enable {
-
     fonts = {
       fontconfig = {
         enable = true;

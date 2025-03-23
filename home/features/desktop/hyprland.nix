@@ -5,12 +5,9 @@
   lib,
   ...
 }:
-with lib;
-let
+with lib; let
   cfg = config.features.desktop.hyprland;
-in
-{
-
+in {
   options.features.desktop.hyprland.enable = mkEnableOption "hyprland config";
 
   config = mkIf cfg.enable {
@@ -20,7 +17,7 @@ in
         inputs.split-monitor-workspaces.packages.${pkgs.stdenv.hostPlatform.system}.split-monitor-workspaces
       ];
       systemd = {
-        variables = [ "--all" ];
+        variables = ["--all"];
         extraCommands = [
           "systemctl --user stop hyprland-session.target"
           "systemctl --user start hyprland-session.target"

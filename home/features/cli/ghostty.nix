@@ -3,12 +3,9 @@
   lib,
   ...
 }:
-
-with lib;
-let
+with lib; let
   cfg = config.features.cli.ghostty;
-in
-{
+in {
   options.features.cli.ghostty.enable = mkEnableOption "enable ghostty";
 
   config = mkIf cfg.enable {
