@@ -3,9 +3,11 @@
   lib,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.features.cli.ghostty;
-in {
+in
+{
   options.features.cli.ghostty.enable = mkEnableOption "enable ghostty";
 
   config = mkIf cfg.enable {
@@ -25,7 +27,6 @@ in {
         cursor-opacity = 0.73;
         cursor-style-blink = true;
         mouse-hide-while-typing = true;
-        # initial-command = "-e zellij";
         window-padding-x = 4;
         window-padding-y = 3;
         window-decoration = false;

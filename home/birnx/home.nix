@@ -16,12 +16,6 @@
 
   home.stateVersion = "24.05";
 
-  programs = {
-    nvf = {
-      enable = true;
-    };
-  };
-
   home.packages = with pkgs; [
     obsidian
     rofi-wayland
