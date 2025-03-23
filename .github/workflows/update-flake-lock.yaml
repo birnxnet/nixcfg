@@ -15,10 +15,6 @@ jobs:
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@main
         with:
-          runner-map: |
-            {
-              "x86_64-linux": "buntu1"
-            }
           flake-lock-path: ./flake.lock
           check-owner: false
           ignore-missing-flake-lock: false
