@@ -4,28 +4,29 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   home.username = lib.mkDefault "birnx";
   home.homeDirectory = lib.mkDefault "/home/${config.home.username}";
 
   imports = [
     inputs.hyprland.homeManagerModules.default
+    inputs.nvf.homeManagerModules.default
   ];
 
   home.stateVersion = "24.05";
 
-  # programs = {
-  #   nvf = {
-  #     enable = true;
-  #   };
-  # };
+  programs = {
+    nvf = {
+      enable = true;
+    };
+  };
 
   home.packages = with pkgs; [
     obsidian
     rofi-wayland
     todoist
     todoist-electron
-    # # inputs.timr.packages.${pkgs.stdenv.hostPlatform.system}.timr
     # inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.zen-browser
     yt-dlp
     ffmpeg-full

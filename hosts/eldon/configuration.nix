@@ -2,8 +2,12 @@
   inputs,
   pkgs,
   ...
-}: {
-  imports = [./hardware-configuration.nix];
+}:
+{
+  imports = [
+    ./hardware-configuration.nix
+    inputs.nvf.nixosModules.default
+  ];
 
   boot = {
     loader.timeout = 1;
@@ -73,7 +77,7 @@
     _1password-gui = {
       enable = true;
       package = pkgs._1password-gui-beta;
-      polkitPolicyOwners = ["birnx"];
+      polkitPolicyOwners = [ "birnx" ];
     };
     _1password = {
       enable = true;
@@ -185,7 +189,7 @@
     enable = true;
     xdgOpenUsePortal = true;
     config = {
-      common.default = ["gtk"];
+      common.default = [ "gtk" ];
       hyprland.default = [
         "gtk"
         "hyprland"

@@ -10,11 +10,6 @@
     ./fzf.nix
   ];
 
-  programs = {
-    nvf = {
-      enable = true;
-    };
-
     zoxide = {
       enable = true;
       enableFishIntegration = true;
