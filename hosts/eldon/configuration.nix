@@ -6,7 +6,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    inputs.nvf.nixosModules.default
+    # inputs.nvf.nixosModules.default
   ];
 
   boot = {

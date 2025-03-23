@@ -11,7 +11,7 @@
 
   imports = [
     inputs.hyprland.homeManagerModules.default
-    inputs.nvf.homeManagerModules.default
+    # inputs.nvf.homeManagerModules.default
   ];
 
   home.stateVersion = "24.05";

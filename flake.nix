@@ -18,7 +18,10 @@
       inputs.hyprland.follows = "hyprland";
     };
 
-    nvf.url = "https://flakehub.com/f/birnxnet/nvf/0.1.1929";
+    nvf = {
+      url = "https://flakehub.com/f/birnxnet/nvf/0.1.1929";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
   };
