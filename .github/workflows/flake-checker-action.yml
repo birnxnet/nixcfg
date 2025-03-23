@@ -18,5 +18,3 @@ jobs:
           fail-mode: true
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@main
-      - name: Build default package
-        run: nix build
