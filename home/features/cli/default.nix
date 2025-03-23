@@ -1,6 +1,6 @@
 {
   pkgs,
-  # inputs,
+  inputs,
   ...
 }:
 {
@@ -8,6 +8,7 @@
     ./fish.nix
     ./ghostty.nix
     ./fzf.nix
+    inputs.nvf.homeManagerModules.default
   ];
 
   programs = {
